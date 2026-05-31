@@ -1,11 +1,11 @@
 [
   {
-    "id": 14,
+    "id": 59,
     "project_name": "Herzog Max / Wissenschaft in der Fußgängerzone",
     "city": "München",
     "bundesland": "Bayern",
     "project_type": "Umbau",
-    "architect_firm": "OSA Ochs Schmidhuber Architekten GmbH",
+    "architect_firm": "OSA Ochs Schmidhuber Architekten",
     "bauherr": "Accumulata",
     "estimated_completion": "2025",
     "scale_units_or_sqm": "14.000 m²",
@@ -15,34 +15,40 @@
       {
         "name": "OSA Ochs Schmidhuber Architekten",
         "role": "Architekt",
-        "firm": "OSA Ochs Schmidhuber Architekten GmbH"
+        "firm": "OSA Ochs Schmidhuber Architekten GmbH",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Accumulata",
         "role": "Projektentwickler",
-        "firm": "Accumulata"
+        "firm": "Accumulata",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Euro Real Estate",
         "role": "Unknown",
-        "firm": "Euro Real Estate"
-      },
-      {
-        "name": "Wilhelm von Finck Gruppe",
-        "role": "Unknown",
-        "firm": "Wilhelm von Finck Gruppe"
+        "firm": "Euro Real Estate",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Max-Planck-Institut für Innovation und Wettbewerb",
         "role": "Unknown",
-        "firm": "Max-Planck-Institut für Innovation und Wettbewerb"
+        "firm": "Max-Planck-Gesellschaft",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 80,
-    "scraped_at": "2026-05-31T11:37:07.760016+00:00"
+    "scraped_at": "2026-05-31T11:45:17.869527+00:00",
+    "first_seen": "2026-05-31T11:46:11.735428+00:00",
+    "last_seen": "2026-05-31T11:46:11.735428+00:00",
+    "times_seen": 1
   },
   {
-    "id": 13,
+    "id": 58,
     "project_name": "Arquipeo",
     "city": "São Paulo",
     "bundesland": null,
@@ -57,44 +63,61 @@
       {
         "name": "Gustavo Utrabo",
         "role": "Architekt",
-        "firm": "Estúdio Gustavo Utrabo"
+        "firm": "Estúdio Gustavo Utrabo",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Fernanda Britto",
         "role": "Architekt",
-        "firm": "Estúdio Gustavo Utrabo"
-      },
-      {
-        "name": "Bárbara Francelin",
-        "role": "Architekt",
-        "firm": "Estúdio Gustavo Utrabo"
+        "firm": "Estúdio Gustavo Utrabo",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Raul Pereira Arquitetos Associados",
         "role": "Planer",
-        "firm": "Raul Pereira Arquitetos Associados"
+        "firm": "Raul Pereira Arquitetos Associados",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Pura Arquitetura",
         "role": "Generalunternehmer",
-        "firm": "Pura Arquitetura"
+        "firm": "Pura Arquitetura",
+        "email": null,
+        "phone": null
       },
       {
         "name": "CMA Engenharia",
         "role": "Planer",
-        "firm": "CMA Engenharia"
+        "firm": "CMA Engenharia",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Consultrix Engenheiros Associados",
         "role": "Planer",
-        "firm": "Consultrix Engenheiros Associados"
+        "firm": "Consultrix Engenheiros Associados",
+        "email": null,
+        "phone": null
+      },
+      {
+        "name": "Brookfield Properties",
+        "role": "Projektentwickler",
+        "firm": "Brookfield Properties",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 80,
-    "scraped_at": "2026-05-31T11:37:04.541310+00:00"
+    "scraped_at": "2026-05-31T11:45:14.812727+00:00",
+    "first_seen": "2026-05-31T11:46:11.724141+00:00",
+    "last_seen": "2026-05-31T11:46:11.724141+00:00",
+    "times_seen": 1
   },
   {
-    "id": 7,
+    "id": 52,
     "project_name": "Vela be Siam Hotel",
     "city": "Bangkok",
     "bundesland": null,
@@ -109,19 +132,26 @@
       {
         "name": "ASWA (Architectural Studio of Work – Aholic)",
         "role": "Architekt",
-        "firm": "ASWA (Architectural Studio of Work – Aholic)"
+        "firm": "ASWA",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Vela 360 Hotels",
         "role": "Projektentwickler",
-        "firm": "Vela 360 Hotels"
+        "firm": "Vela 360 Hotels",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 80,
-    "scraped_at": "2026-05-31T11:36:44.124313+00:00"
+    "scraped_at": "2026-05-31T11:44:54.865419+00:00",
+    "first_seen": "2026-05-31T11:46:11.651334+00:00",
+    "last_seen": "2026-05-31T11:46:11.651334+00:00",
+    "times_seen": 1
   },
   {
-    "id": 2,
+    "id": 47,
     "project_name": "Klettern im Brauhaus",
     "city": "Tirschenreuth",
     "bundesland": "Bayern",
@@ -136,44 +166,61 @@
       {
         "name": "Brückner & Brückner Architekten",
         "role": "Architekt",
-        "firm": "Brückner & Brückner Architekten"
+        "firm": "Brückner & Brückner Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "gesk.hack Landschaftsarchitekten",
         "role": "Planer",
-        "firm": "gesk.hack Landschaftsarchitekten"
+        "firm": "gesk.hack Landschaftsarchitekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Lehner + Baumgärtner Ingenieurgesellschaft",
         "role": "Planer",
-        "firm": "Lehner + Baumgärtner Ingenieurgesellschaft"
+        "firm": "Lehner + Baumgärtner Ingenieurgesellschaft",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Grünwald & Ach Planungsgesellschaft für Energie- und Gebäudetechnik",
         "role": "Planer",
-        "firm": "Grünwald & Ach Planungsgesellschaft für Energie- und Gebäudetechnik"
+        "firm": "Grünwald & Ach Planungsgesellschaft für Energie- und Gebäudetechnik",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Ingenieurbüro für Elektrotechnik Zeitler",
         "role": "Planer",
-        "firm": "Ingenieurbüro für Elektrotechnik Zeitler"
+        "firm": "Ingenieurbüro für Elektrotechnik Zeitler",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Wolfgang Sorge Ingenieurbüro für Bauphysik",
         "role": "Planer",
-        "firm": "Wolfgang Sorge Ingenieurbüro für Bauphysik"
+        "firm": "Wolfgang Sorge Ingenieurbüro für Bauphysik",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Deutscher Alpenverein Sektion Karlsbad e.V. Tirschenreuth",
         "role": "Unknown",
-        "firm": "Deutscher Alpenverein Sektion Karlsbad e.V. Tirschenreuth"
+        "firm": "Deutscher Alpenverein Sektion Karlsbad e.V. Tirschenreuth",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 75,
-    "scraped_at": "2026-05-31T11:36:27.908710+00:00"
+    "scraped_at": "2026-05-31T11:44:34.493033+00:00",
+    "first_seen": "2026-05-31T11:46:11.598564+00:00",
+    "last_seen": "2026-05-31T11:46:11.598564+00:00",
+    "times_seen": 1
   },
   {
-    "id": 6,
+    "id": 51,
     "project_name": "Wedding Advanced Laboratories (WAL)",
     "city": "Berlin",
     "bundesland": "Berlin",
@@ -181,56 +228,75 @@
     "architect_firm": "Thomas Müller Ivan Reimann Architekten",
     "bauherr": "Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen Berlin",
     "estimated_completion": "2025",
-    "scale_units_or_sqm": "16.000 m² Bruttogrundfläche",
+    "scale_units_or_sqm": "16.000 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Institutsbau_v",
     "source": "BauNetz.de",
     "actors": [
       {
         "name": "Thomas Müller Ivan Reimann Architekten",
         "role": "Architekt",
-        "firm": "Thomas Müller Ivan Reimann Architekten"
+        "firm": "Thomas Müller Ivan Reimann Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Alexander Buchhofer",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Weidinger Landschaftsarchitekten",
         "role": "Planer",
-        "firm": "Weidinger Landschaftsarchitekten"
+        "firm": "Weidinger Landschaftsarchitekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "GSE Ingenieur-Gesellschaft",
-        "role": "Planer",
-        "firm": "GSE Ingenieur-Gesellschaft"
+        "role": "Unknown",
+        "firm": "GSE Ingenieur-Gesellschaft",
+        "email": null,
+        "phone": null
       },
       {
         "name": "W2 ProjektManagement",
         "role": "Unknown",
-        "firm": "W2 ProjektManagement"
+        "firm": "W2 ProjektManagement",
+        "email": null,
+        "phone": null
       },
       {
         "name": "ZWP Ingenieur-AG",
-        "role": "Planer",
-        "firm": "ZWP Ingenieur-AG"
+        "role": "Unknown",
+        "firm": "ZWP Ingenieur-AG",
+        "email": null,
+        "phone": null
       },
       {
-        "name": "Friederike Tebbe Studio Farbarchiv",
-        "role": "Planer",
-        "firm": "Friederike Tebbe Studio Farbarchiv"
+        "name": "Friederike Tebbe",
+        "role": "Unknown",
+        "firm": "Studio Farbarchiv",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Hans Gerber",
         "role": "Unknown",
-        "firm": "Berliner Hochschule für Technik"
+        "firm": "Berliner Hochschule für Technik",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T11:36:41.277390+00:00"
+    "scraped_at": "2026-05-31T11:44:52.529702+00:00",
+    "first_seen": "2026-05-31T11:46:11.640997+00:00",
+    "last_seen": "2026-05-31T11:46:11.640997+00:00",
+    "times_seen": 1
   },
   {
-    "id": 5,
+    "id": 50,
     "project_name": "The Brick 80 / Loftwohnen mit Raumboxen",
     "city": "Zürich",
     "bundesland": null,
@@ -238,51 +304,68 @@
     "architect_firm": "Züst Gübeli Gambetti Architektur und Städtebau",
     "bauherr": null,
     "estimated_completion": "2024",
-    "scale_units_or_sqm": "14.638 m²",
+    "scale_units_or_sqm": "14.638 m² Geschossfläche oberirdisch",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Umnutzung_eines_Buerobaus_in_Zuerich_von_Zuest_Guebeli_Gambetti_10325088.html",
     "source": "BauNetz.de",
     "actors": [
       {
         "name": "Züst Gübeli Gambetti Architektur und Städtebau",
         "role": "Architekt",
-        "firm": "Züst Gübeli Gambetti Architektur und Städtebau"
+        "firm": "Züst Gübeli Gambetti Architektur und Städtebau",
+        "email": null,
+        "phone": null
       },
       {
         "name": "befair partners",
         "role": "Unknown",
-        "firm": "befair partners"
+        "firm": "befair partners",
+        "email": null,
+        "phone": null
       },
       {
         "name": "ORT AG",
         "role": "Planer",
-        "firm": "ORT AG"
+        "firm": "ORT AG",
+        "email": null,
+        "phone": null
       },
       {
         "name": "K2S Bauingenieure AG",
         "role": "Planer",
-        "firm": "K2S Bauingenieure AG"
+        "firm": "K2S Bauingenieure AG",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Michael Wichser + Partner AG",
         "role": "Planer",
-        "firm": "Michael Wichser + Partner AG"
+        "firm": "Michael Wichser + Partner AG",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Wincasa AG",
         "role": "Projektentwickler",
-        "firm": "Wincasa AG"
+        "firm": "Wincasa AG",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Baumschlager Eberle Architekten",
         "role": "Architekt",
-        "firm": "Baumschlager Eberle Architekten"
+        "firm": "Baumschlager Eberle Architekten",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T11:36:37.044809+00:00"
+    "scraped_at": "2026-05-31T11:44:44.084214+00:00",
+    "first_seen": "2026-05-31T11:46:11.628631+00:00",
+    "last_seen": "2026-05-31T11:46:11.628631+00:00",
+    "times_seen": 1
   },
   {
-    "id": 3,
+    "id": 48,
     "project_name": "Terrassierter Lückenfüller",
     "city": "Toulouse",
     "bundesland": null,
@@ -297,19 +380,31 @@
       {
         "name": "BAST Bureau d'Architectures Sans Titre",
         "role": "Architekt",
-        "firm": "BAST Bureau d'Architectures Sans Titre"
+        "firm": "BAST Bureau d'Architectures Sans Titre",
+        "email": null,
+        "phone": null
+      },
+      {
+        "name": "Wolfgang Zeh",
+        "role": "Unknown",
+        "firm": null,
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T11:36:30.100945+00:00"
+    "scraped_at": "2026-05-31T11:44:37.016948+00:00",
+    "first_seen": "2026-05-31T11:46:11.608557+00:00",
+    "last_seen": "2026-05-31T11:46:11.608557+00:00",
+    "times_seen": 1
   },
   {
-    "id": 9,
+    "id": 54,
     "project_name": "Malibu Highschool",
     "city": "Malibu",
     "bundesland": null,
     "project_type": "Schule",
-    "architect_firm": "Koning Eizenberg Architecture und NAC Architecture",
+    "architect_firm": "Koning Eizenberg Architecture, NAC Architecture",
     "bauherr": "Santa Monica-Malibu Unified School District",
     "estimated_completion": "2025",
     "scale_units_or_sqm": "7.430 m²",
@@ -319,29 +414,40 @@
       {
         "name": "Koning Eizenberg Architecture",
         "role": "Architekt",
-        "firm": "Koning Eizenberg Architecture"
+        "firm": "Koning Eizenberg Architecture",
+        "email": null,
+        "phone": null
       },
       {
         "name": "NAC Architecture",
         "role": "Architekt",
-        "firm": "NAC Architecture"
+        "firm": "NAC Architecture",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Spurlock Landscape Architects",
         "role": "Planer",
-        "firm": "Spurlock Landscape Architects"
+        "firm": "Spurlock Landscape Architects",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Santa Monica-Malibu Unified School District",
         "role": "Projektentwickler",
-        "firm": null
+        "firm": "Santa Monica-Malibu Unified School District",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 60,
-    "scraped_at": "2026-05-31T11:36:50.515714+00:00"
+    "scraped_at": "2026-05-31T11:45:00.640726+00:00",
+    "first_seen": "2026-05-31T11:46:11.678777+00:00",
+    "last_seen": "2026-05-31T11:46:11.678777+00:00",
+    "times_seen": 1
   },
   {
-    "id": 4,
+    "id": 49,
     "project_name": "Westerlundska Upper Secondary School",
     "city": "Enköping",
     "bundesland": null,
@@ -356,29 +462,40 @@
       {
         "name": "White Arkitekter",
         "role": "Architekt",
-        "firm": "White Arkitekter"
+        "firm": "White Arkitekter",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Kinnarps",
         "role": "Unknown",
-        "firm": "Kinnarps"
+        "firm": "Kinnarps",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Anders Bobert",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Henrik Mill",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 60,
-    "scraped_at": "2026-05-31T11:36:32.812660+00:00"
+    "scraped_at": "2026-05-31T11:44:39.868541+00:00",
+    "first_seen": "2026-05-31T11:46:11.619502+00:00",
+    "last_seen": "2026-05-31T11:46:11.619502+00:00",
+    "times_seen": 1
   },
   {
-    "id": 42,
+    "id": 87,
     "project_name": "Ackermann + Renner – Büroprofil",
     "city": "Berlin",
     "bundesland": "Berlin",
@@ -393,14 +510,19 @@
       {
         "name": "Ackermann + Renner",
         "role": "Architekt",
-        "firm": "Ackermann + Renner"
+        "firm": "Ackermann + Renner",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:38:07.698788+00:00"
+    "scraped_at": "2026-05-31T11:46:11.535231+00:00",
+    "first_seen": "2026-05-31T11:46:12.113417+00:00",
+    "last_seen": "2026-05-31T11:46:12.113417+00:00",
+    "times_seen": 1
   },
   {
-    "id": 41,
+    "id": 86,
     "project_name": "ABMP – Büroprofil",
     "city": "Freiburg",
     "bundesland": "Baden-Württemberg",
@@ -415,14 +537,19 @@
       {
         "name": "ABMP",
         "role": "Architekt",
-        "firm": "ABMP"
+        "firm": "ABMP",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:38:06.216173+00:00"
+    "scraped_at": "2026-05-31T11:46:10.091577+00:00",
+    "first_seen": "2026-05-31T11:46:12.098600+00:00",
+    "last_seen": "2026-05-31T11:46:12.098600+00:00",
+    "times_seen": 1
   },
   {
-    "id": 40,
+    "id": 85,
     "project_name": "Abelmann Vielain Pock Architekten – Büroprofil",
     "city": "Berlin",
     "bundesland": "Berlin",
@@ -437,14 +564,19 @@
       {
         "name": "Abelmann Vielain Pock Architekten",
         "role": "Architekt",
-        "firm": "Abelmann Vielain Pock Architekten"
+        "firm": "Abelmann Vielain Pock Architekten",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:38:02.268741+00:00"
+    "scraped_at": "2026-05-31T11:46:06.978681+00:00",
+    "first_seen": "2026-05-31T11:46:12.088695+00:00",
+    "last_seen": "2026-05-31T11:46:12.088695+00:00",
+    "times_seen": 1
   },
   {
-    "id": 39,
+    "id": 84,
     "project_name": "AAg LoebnerSchäferWeber – Büroprofil",
     "city": "Heidelberg",
     "bundesland": "Baden-Württemberg",
@@ -459,14 +591,19 @@
       {
         "name": "AAg LoebnerSchäferWeber",
         "role": "Architekt",
-        "firm": "AAg LoebnerSchäferWeber"
+        "firm": "AAg LoebnerSchäferWeber",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:38:00.605253+00:00"
+    "scraped_at": "2026-05-31T11:46:05.093815+00:00",
+    "first_seen": "2026-05-31T11:46:12.073459+00:00",
+    "last_seen": "2026-05-31T11:46:12.073459+00:00",
+    "times_seen": 1
   },
   {
-    "id": 38,
+    "id": 83,
     "project_name": "A24 LANDSCHAFT Landschaftsarchitektur – Büroprofil",
     "city": "Berlin",
     "bundesland": "Berlin",
@@ -481,14 +618,19 @@
       {
         "name": "A24 LANDSCHAFT Landschaftsarchitektur",
         "role": "Architekt",
-        "firm": "A24 LANDSCHAFT Landschaftsarchitektur"
+        "firm": "A24 LANDSCHAFT Landschaftsarchitektur",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:59.100428+00:00"
+    "scraped_at": "2026-05-31T11:46:03.350650+00:00",
+    "first_seen": "2026-05-31T11:46:12.064071+00:00",
+    "last_seen": "2026-05-31T11:46:12.064071+00:00",
+    "times_seen": 1
   },
   {
-    "id": 37,
+    "id": 82,
     "project_name": "3pass – Büroprofil",
     "city": "Köln",
     "bundesland": "Nordrhein-Westfalen",
@@ -503,14 +645,19 @@
       {
         "name": "3pass",
         "role": "Architekt",
-        "firm": "3pass"
+        "firm": "3pass",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:54.434544+00:00"
+    "scraped_at": "2026-05-31T11:45:58.553731+00:00",
+    "first_seen": "2026-05-31T11:46:12.050511+00:00",
+    "last_seen": "2026-05-31T11:46:12.050511+00:00",
+    "times_seen": 1
   },
   {
-    "id": 36,
+    "id": 81,
     "project_name": "3G1 Architektur – Büroprofil",
     "city": "München",
     "bundesland": "Bayern",
@@ -525,14 +672,19 @@
       {
         "name": "3G1 Architektur",
         "role": "Architekt",
-        "firm": "3G1 Architektur"
+        "firm": "3G1 Architektur",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:53.038434+00:00"
+    "scraped_at": "2026-05-31T11:45:55.858591+00:00",
+    "first_seen": "2026-05-31T11:46:12.040858+00:00",
+    "last_seen": "2026-05-31T11:46:12.040858+00:00",
+    "times_seen": 1
   },
   {
-    "id": 35,
+    "id": 80,
     "project_name": "3deluxe – Büroprofil",
     "city": "Wiesbaden",
     "bundesland": "Hessen",
@@ -547,14 +699,19 @@
       {
         "name": "3deluxe",
         "role": "Architekt",
-        "firm": "3deluxe"
+        "firm": "3deluxe",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:51.612251+00:00"
+    "scraped_at": "2026-05-31T11:45:54.368533+00:00",
+    "first_seen": "2026-05-31T11:46:12.031020+00:00",
+    "last_seen": "2026-05-31T11:46:12.031020+00:00",
+    "times_seen": 1
   },
   {
-    "id": 34,
+    "id": 79,
     "project_name": "360grad+ architekten – Büroprofil",
     "city": "Hamburg",
     "bundesland": "Hamburg",
@@ -569,14 +726,19 @@
       {
         "name": "360grad+ architekten",
         "role": "Architekt",
-        "firm": "360grad+ architekten"
+        "firm": "360grad+ architekten",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:50.213320+00:00"
+    "scraped_at": "2026-05-31T11:45:52.718608+00:00",
+    "first_seen": "2026-05-31T11:46:12.018454+00:00",
+    "last_seen": "2026-05-31T11:46:12.018454+00:00",
+    "times_seen": 1
   },
   {
-    "id": 33,
+    "id": 78,
     "project_name": "2-box architekten – Büroprofil",
     "city": "Stuttgart",
     "bundesland": "Baden-Württemberg",
@@ -591,14 +753,19 @@
       {
         "name": "2-box architekten",
         "role": "Architekt",
-        "firm": "2-box architekten"
+        "firm": "2-box architekten",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:48.691702+00:00"
+    "scraped_at": "2026-05-31T11:45:51.213852+00:00",
+    "first_seen": "2026-05-31T11:46:12.008522+00:00",
+    "last_seen": "2026-05-31T11:46:12.008522+00:00",
+    "times_seen": 1
   },
   {
-    "id": 32,
+    "id": 77,
     "project_name": "17A ARCHITEKTUR – Büroprofil",
     "city": "Königsbrunn",
     "bundesland": "Bayern",
@@ -613,14 +780,19 @@
       {
         "name": "17A ARCHITEKTUR",
         "role": "Architekt",
-        "firm": "17A ARCHITEKTUR"
+        "firm": "17A ARCHITEKTUR",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:47.270642+00:00"
+    "scraped_at": "2026-05-31T11:45:49.728974+00:00",
+    "first_seen": "2026-05-31T11:46:11.986341+00:00",
+    "last_seen": "2026-05-31T11:46:11.986341+00:00",
+    "times_seen": 1
   },
   {
-    "id": 31,
+    "id": 76,
     "project_name": "1100 Architekten Riehm+Piscuskas – Büroprofil",
     "city": "Frankfurt am Main",
     "bundesland": "Hessen",
@@ -635,61 +807,81 @@
       {
         "name": "1100 Architekten Riehm+Piscuskas",
         "role": "Architekt",
-        "firm": "1100 Architekten Riehm+Piscuskas"
+        "firm": "1100 Architekten Riehm+Piscuskas",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:45.864619+00:00"
+    "scraped_at": "2026-05-31T11:45:48.143233+00:00",
+    "first_seen": "2026-05-31T11:46:11.960560+00:00",
+    "last_seen": "2026-05-31T11:46:11.960560+00:00",
+    "times_seen": 1
   },
   {
-    "id": 15,
-    "project_name": "New Wave London - Aufstockung Humber Road",
+    "id": 60,
+    "project_name": "New Wave London Aufstockung",
     "city": "London",
     "bundesland": null,
     "project_type": "Aufstockung",
     "architect_firm": "Thomas-McBrien Architects",
     "bauherr": "New Wave London",
     "estimated_completion": "2023",
-    "scale_units_or_sqm": "495 m²",
+    "scale_units_or_sqm": "495 m² Bruttogrundfläche",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Aufstockung_in_London_von_Thomas-McBrien_10321259.html",
     "source": "BauNetz.de",
     "actors": [
       {
         "name": "Thomas-McBrien Architects",
         "role": "Architekt",
-        "firm": null
+        "firm": "Thomas-McBrien Architects",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Barry McBrien",
-        "role": "Planer",
-        "firm": "Thomas-McBrien Architects"
+        "role": "Unknown",
+        "firm": "Thomas-McBrien Architects",
+        "email": null,
+        "phone": null
       },
       {
         "name": "New Wave London",
         "role": "Projektentwickler",
-        "firm": null
+        "firm": "New Wave London",
+        "email": null,
+        "phone": null
       },
       {
         "name": "LIM Engineering",
         "role": "Planer",
-        "firm": null
+        "firm": "LIM Engineering",
+        "email": null,
+        "phone": null
       },
       {
         "name": "The PES",
         "role": "Planer",
-        "firm": null
+        "firm": "The PES",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Assent",
-        "role": "Planer",
-        "firm": null
+        "role": "Unknown",
+        "firm": "Assent",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T11:37:10.508745+00:00"
+    "scraped_at": "2026-05-31T11:45:20.872242+00:00",
+    "first_seen": "2026-05-31T11:46:11.748472+00:00",
+    "last_seen": "2026-05-31T11:46:11.748472+00:00",
+    "times_seen": 1
   },
   {
-    "id": 1,
+    "id": 46,
     "project_name": "La Nuova Marna / Kultur und Kanu am Ticino",
     "city": "Sesto Calende",
     "bundesland": null,
@@ -704,24 +896,33 @@
       {
         "name": "Giulia de Appolonia",
         "role": "Architekt",
-        "firm": "Giulia de Appolonia GDA"
+        "firm": "Giulia de Appolonia GDA",
+        "email": null,
+        "phone": null
       },
       {
         "name": "F&M Ingegneria",
         "role": "Planer",
-        "firm": "F&M Ingegneria"
+        "firm": "F&M Ingegneria",
+        "email": null,
+        "phone": null
       },
       {
-        "name": "Filippo Poli",
-        "role": "Unknown",
-        "firm": null
+        "name": "Gemeinde Sesto Calende",
+        "role": "Projektentwickler",
+        "firm": null,
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 45,
-    "scraped_at": "2026-05-31T11:36:23.734688+00:00"
+    "scraped_at": "2026-05-31T11:44:25.548528+00:00",
+    "first_seen": "2026-05-31T11:46:11.590853+00:00",
+    "last_seen": "2026-05-31T11:46:11.590853+00:00",
+    "times_seen": 1
   },
   {
-    "id": 10,
+    "id": 55,
     "project_name": "Aufgestockt am Kalterer See",
     "city": "Sankt Josef am See",
     "bundesland": null,
@@ -736,54 +937,75 @@
       {
         "name": "Flaim Prünster Architekten",
         "role": "Architekt",
-        "firm": "Flaim Prünster Architekten"
+        "firm": "Flaim Prünster Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Loris Clara",
         "role": "Architekt",
-        "firm": "Flaim Prünster Architekten"
+        "firm": "Flaim Prünster Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Roberto Zanini",
         "role": "Architekt",
-        "firm": "Flaim Prünster Architekten"
+        "firm": "Flaim Prünster Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Martino Stelzer",
         "role": "Architekt",
-        "firm": "Flaim Prünster Architekten"
+        "firm": "Flaim Prünster Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Walter Angonese",
         "role": "Architekt",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Holzner & Bertagnolli",
         "role": "Planer",
-        "firm": "Holzner & Bertagnolli"
+        "firm": "Holzner & Bertagnolli",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Ing. Carlini",
         "role": "Planer",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Othmar Barth",
         "role": "Architekt",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Michael Obrist",
         "role": "Architekt",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 40,
-    "scraped_at": "2026-05-31T11:36:54.782999+00:00"
+    "scraped_at": "2026-05-31T11:45:04.629514+00:00",
+    "first_seen": "2026-05-31T11:46:11.690206+00:00",
+    "last_seen": "2026-05-31T11:46:11.690206+00:00",
+    "times_seen": 1
   },
   {
-    "id": 12,
+    "id": 57,
     "project_name": "Kärntner Hühner-Loft",
     "city": "Spittal an der Drau",
     "bundesland": null,
@@ -798,29 +1020,40 @@
       {
         "name": "Hohengasser Wirnsberger Architekten",
         "role": "Architekt",
-        "firm": "Hohengasser Wirnsberger Architekten"
+        "firm": "Hohengasser Wirnsberger Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Thomas Winkler",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Markus Lackner",
         "role": "Planer",
-        "firm": "BAUINGENIEURE | LACKNER | EGGER | ZT GMBH"
+        "firm": "BAUINGENIEURE | LACKNER | EGGER | ZT GMBH",
+        "email": null,
+        "phone": null
       },
       {
         "name": "K&B Holzbau",
         "role": "Generalunternehmer",
-        "firm": "K&B Holzbau"
+        "firm": "K&B Holzbau",
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 30,
-    "scraped_at": "2026-05-31T11:37:01.052531+00:00"
+    "scraped_at": "2026-05-31T11:45:11.169073+00:00",
+    "first_seen": "2026-05-31T11:46:11.709616+00:00",
+    "last_seen": "2026-05-31T11:46:11.709616+00:00",
+    "times_seen": 1
   },
   {
-    "id": 11,
+    "id": 56,
     "project_name": "Maison Imho",
     "city": "Riehen",
     "bundesland": null,
@@ -835,43 +1068,58 @@
       {
         "name": "Stern Zürn Architekten",
         "role": "Architekt",
-        "firm": "Stern Zürn Architekten"
+        "firm": "Stern Zürn Architekten",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Ingénieur wh-p Ingenieure",
         "role": "Planer",
-        "firm": "Ingénieur wh-p Ingenieure"
+        "firm": "Ingénieur wh-p Ingenieure",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Studio Emma Thomas",
         "role": "Planer",
-        "firm": "Studio Emma Thomas"
+        "firm": "Studio Emma Thomas",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Georg Paul",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Lehmag AG",
         "role": "Unknown",
-        "firm": "Lehmag AG"
+        "firm": "Lehmag AG",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Markus Stern",
         "role": "Unknown",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       }
     ],
     "relevance_score": 30,
-    "scraped_at": "2026-05-31T11:36:58.055337+00:00"
+    "scraped_at": "2026-05-31T11:45:07.966713+00:00",
+    "first_seen": "2026-05-31T11:46:11.702498+00:00",
+    "last_seen": "2026-05-31T11:46:11.702498+00:00",
+    "times_seen": 1
   },
   {
-    "id": 8,
-    "project_name": "Kabinentrakt in Ripoll",
+    "id": 53,
+    "project_name": "Kabinentrakt Fußballclub Ripoll",
     "city": "Ripoll",
     "bundesland": null,
-    "project_type": "Sportanlage",
+    "project_type": "Sportfunktionsbau",
     "architect_firm": "MH.AP Studio und Sergi Serrat",
     "bauherr": null,
     "estimated_completion": "2023",
@@ -882,30 +1130,36 @@
       {
         "name": "MH.AP Studio",
         "role": "Architekt",
-        "firm": "MH.AP Studio"
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Sergi Serrat",
         "role": "Architekt",
-        "firm": null
+        "firm": null,
+        "email": null,
+        "phone": null
       },
       {
         "name": "Marina Huguet",
         "role": "Architekt",
-        "firm": "MH.AP Studio"
+        "firm": "MH.AP Studio",
+        "email": null,
+        "phone": null
       },
       {
         "name": "Andrés Penuela",
         "role": "Architekt",
-        "firm": "MH.AP Studio"
-      },
-      {
-        "name": "Pol Masip",
-        "role": "Unknown",
-        "firm": null
+        "firm": "MH.AP Studio",
+        "email": null,
+        "phone": null
       }
     ],
-    "relevance_score": 20,
-    "scraped_at": "2026-05-31T11:36:47.888529+00:00"
+    "relevance_score": 30,
+    "scraped_at": "2026-05-31T11:44:57.745887+00:00",
+    "first_seen": "2026-05-31T11:46:11.667373+00:00",
+    "last_seen": "2026-05-31T11:46:11.667373+00:00",
+    "times_seen": 1
   }
 ]

@@ -32,6 +32,8 @@ EXTRACT_PROMPT = """Extrahiere aus dem folgenden Bauprojekt-Text diese Felder al
     - name: Vollständiger Name der Person oder Firma (string)
     - role: Eine von: "Architekt", "Planer", "Generalunternehmer", "Projektentwickler", "Unknown"
     - firm: Firmenzugehörigkeit falls angegeben (string oder null)
+    - email: E-Mail-Adresse falls im Text genannt (string oder null)
+    - phone: Telefonnummer falls im Text genannt (string oder null)
   Keine Akteure gefunden → leere Liste [].
 
 Antworte ausschließlich mit dem JSON-Objekt.
