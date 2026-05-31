@@ -365,18 +365,20 @@ if run_scrape:
         st.error("❌ Kein Anthropic API-Key gefunden. Bitte `ANTHROPIC_API_KEY` in den Streamlit-Secrets hinterlegen.")
     else:
         os.environ["ANTHROPIC_API_KEY"] = api_key
-        with st.spinner("Suche läuft — ca. 60–90 Sekunden…"):
-            try:
-                from pipeline import run_pipeline
+        try:
+            from pipeline import run_pipeline
+            with st.status("Live-Suche läuft…", expanded=True) as status:
+                st.write("🔍 Verbinde mit BauNetz.de, architektensuche.de…")
                 summary = run_pipeline(limit_per_source=15)
-                st.success(
-                    f"✅ {summary['inserted']} neu · {summary['updated']} aktualisiert · "
-                    f"{summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} im Cache"
-                )
-                time.sleep(1)
-                st.rerun()
-            except Exception as e:
-                st.error(f"Suche fehlgeschlagen: {e}")
+                st.write(f"✅ {summary['inserted']} neue Leads gefunden")
+                st.write(f"🔄 {summary['updated']} bestehende Leads aktualisiert")
+                st.write(f"🗄️ Cache: {summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} Einträge")
+                status.update(label=f"Fertig — {summary['inserted']} neue Leads", state="complete", expanded=False)
+            st.toast(f"✅ {summary['inserted']} neue · {summary['updated']} aktualisierte Leads", icon="🏗️")
+            time.sleep(0.5)
+            st.rerun()
+        except Exception as e:
+            st.error(f"Suche fehlgeschlagen: {e}")
 
 # ---------------------------------------------------------------------------
 # Load data
@@ -450,24 +452,46 @@ if using_seed:
     )
 
 # ---------------------------------------------------------------------------
-# Leads list
+# Search bar
 # ---------------------------------------------------------------------------
-st.markdown(f'<div class="section-title">{len(leads)} Leads &nbsp;·&nbsp; Score ≥ {min_score}'
-            + (" &nbsp;·&nbsp; Nur Deutschland" if filter_german else "")
-            + f" &nbsp;·&nbsp; {sort_by}</div>", unsafe_allow_html=True)
+search = st.text_input(
+    "🔍 Suche",
+    placeholder="Projektname, Stadt, Architekt, Projekttyp…",
+    label_visibility="collapsed",
+)
+if search:
+    q = search.lower()
+    leads = [l for l in leads if any(
+        q in (l.get(f) or "").lower()
+        for f in ["project_name", "city", "bundesland", "architect_firm", "project_type", "bauherr"]
+    )]
 
-if not leads:
-    st.markdown("""
+top_leads = [l for l in leads if l.get("relevance_score", 0) >= 70]
+
+# ---------------------------------------------------------------------------
+# Tabs
+# ---------------------------------------------------------------------------
+tab1, tab2, tab3 = st.tabs([
+    f"📋 Alle Leads ({len(leads)})",
+    f"⭐ Top-Leads ({len(top_leads)})",
+    "🔍 Digitale Zwillinge",
+])
+
+# ── Helper: render expander cards ──────────────────────────────────────────
+def render_lead_cards(lead_list: list[dict]) -> None:
+    if not lead_list:
+        st.markdown("""
 <div class="empty">
   <div class="empty-icon">🏗️</div>
-  <div class="empty-text">Keine Leads entsprechen den Filtern.</div>
+  <div class="empty-text">Keine Leads gefunden.</div>
   <div class="empty-sub">Mindest-Score senken oder Live-Suche starten.</div>
 </div>
 """, unsafe_allow_html=True)
-else:
-    for lead in leads:
+        return
+
+    for lead in lead_list:
         score  = lead.get("relevance_score", 0)
-        name   = lead.get("project_name") or "Unknown project"
+        name   = lead.get("project_name") or "Unbekanntes Projekt"
         city   = lead.get("city") or "—"
         bl     = lead.get("bundesland") or ""
         ptype  = lead.get("project_type") or "—"
@@ -475,28 +499,24 @@ else:
         actors = lead.get("actors") or []
         t_seen = lead.get("times_seen", 1)
 
-        # Score indicator prefix in label
         if score >= 70:   dot = "●"
         elif score >= 40: dot = "◑"
         else:             dot = "○"
 
-        location = f"{city}" + (f", {bl}" if bl and bl != "—" else "")
-        label = f"{dot} {score}   {name}   ·   {location}   ·   {ptype}"
+        location = city + (f", {bl}" if bl and bl != "—" else "")
+        label    = f"{dot} {score}   {name}   ·   {location}   ·   {ptype}"
 
         with st.expander(label, expanded=False):
-            # Top row: score + chips
-            arch_chip  = f'<span class="chip">{arch}</span>' if arch != "—" else ""
-            bauherr    = lead.get("bauherr") or ""
-            bauherr_chip = f'<span class="chip">{bauherr}</span>' if bauherr else ""
-            seen_chip  = f'<span class="chip">{t_seen}× gesichtet</span>'
-            src_chip   = f'<span class="chip chip-red">{lead.get("source") or "—"}</span>'
-
+            arch_chip    = f'<span class="chip">{arch}</span>' if arch != "—" else ""
+            bauherr_v    = lead.get("bauherr") or ""
+            bauherr_chip = f'<span class="chip">{bauherr_v}</span>' if bauherr_v else ""
+            seen_chip    = f'<span class="chip">{t_seen}× gesichtet</span>'
+            src_chip     = f'<span class="chip chip-red">{lead.get("source") or "—"}</span>'
             st.markdown(
                 f'<div style="margin:12px 0 4px 0">{arch_chip}{bauherr_chip}{seen_chip}{src_chip}</div>',
                 unsafe_allow_html=True,
             )
 
-            # Detail grid
             completion = lead.get("estimated_completion") or "—"
             scale      = lead.get("scale_units_or_sqm") or "—"
             url        = lead.get("source_url") or ""
@@ -504,50 +524,30 @@ else:
 
             st.markdown(f"""
 <div class="detail-grid">
-  <div class="detail-row">
-    <span class="detail-label">Projekttyp</span>
-    <span class="detail-value">{ptype}</span>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Standort</span>
-    <span class="detail-value">{location}</span>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Fertigstellung</span>
-    <span class="detail-value">{completion}</span>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Größe</span>
-    <span class="detail-value">{scale}</span>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Relevanz</span>
-    <span class="detail-value" style="color:{score_color(score)};font-weight:700">{score} / 100</span>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Quelle</span>
-    <span class="detail-value">{link_html}</span>
-  </div>
+  <div class="detail-row"><span class="detail-label">Projekttyp</span><span class="detail-value">{ptype}</span></div>
+  <div class="detail-row"><span class="detail-label">Standort</span><span class="detail-value">{location}</span></div>
+  <div class="detail-row"><span class="detail-label">Fertigstellung</span><span class="detail-value">{completion}</span></div>
+  <div class="detail-row"><span class="detail-label">Größe</span><span class="detail-value">{scale}</span></div>
+  <div class="detail-row"><span class="detail-label">Relevanz</span><span class="detail-value" style="color:{score_color(score)};font-weight:700">{score} / 100</span></div>
+  <div class="detail-row"><span class="detail-label">Quelle</span><span class="detail-value">{link_html}</span></div>
 </div>
 """, unsafe_allow_html=True)
 
-            # Actors
             if actors:
                 st.markdown('<div class="detail-label" style="margin-bottom:6px">Personen &amp; Firmen</div>',
                             unsafe_allow_html=True)
                 pills = ""
                 for a in actors:
-                    aname = a.get("name") or "—"
-                    arole = a.get("role") or ""
-                    afirm = a.get("firm") or ""
+                    aname  = a.get("name") or "—"
+                    arole  = a.get("role") or ""
+                    afirm  = a.get("firm") or ""
                     aemail = a.get("email") or ""
-                    extra = ""
-                    if afirm: extra += f" · {afirm}"
+                    extra  = ""
+                    if afirm:  extra += f" · {afirm}"
                     if aemail: extra += f' · <a href="mailto:{aemail}" style="color:var(--red)">{aemail}</a>'
                     pills += f'<div class="actor-pill"><span class="actor-role">{arole}</span><span>{aname}{extra}</span></div>'
                 st.markdown(pills, unsafe_allow_html=True)
 
-                # Outreach email
                 emails = [a.get("email") for a in actors if a.get("email")]
                 if emails:
                     st.markdown("")
@@ -564,8 +564,7 @@ else:
                                     f"von Solarlux (Hersteller von Glasfassaden und Schiebetürsystemen) "
                                     f"an {actor_name} von {actor_firm or arch} "
                                     f"bezüglich des Projekts '{name}' in {city}. "
-                                    f"Projekttyp: {ptype}. "
-                                    f"Max. 120 Wörter, freundlich und konkret."
+                                    f"Projekttyp: {ptype}. Max. 120 Wörter, freundlich und konkret."
                                 )
                                 msg = client.messages.create(
                                     model="claude-haiku-4-5-20251001",
@@ -576,25 +575,80 @@ else:
                             except Exception as e:
                                 st.error(f"Generierung fehlgeschlagen: {e}")
 
-            # Timestamps
             fs = (lead.get("first_seen") or "")[:16].replace("T", " ")
             ls = (lead.get("last_seen")  or "")[:16].replace("T", " ")
             st.markdown(
                 f'<div style="font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;'
-                f'border-top:1px solid var(--border)">Erstmals gesehen: {fs or "—"} UTC &nbsp;·&nbsp; Zuletzt gesehen: {ls or "—"} UTC</div>',
+                f'border-top:1px solid var(--border)">Erstmals: {fs or "—"} UTC &nbsp;·&nbsp; Zuletzt: {ls or "—"} UTC</div>',
                 unsafe_allow_html=True,
             )
 
-# ---------------------------------------------------------------------------
-# Digital Twins — Lookalike Matching
-# ---------------------------------------------------------------------------
-st.markdown("<br>", unsafe_allow_html=True)
-st.markdown('<div class="section-title">Digitale Zwillinge — Lookalike-Matching</div>', unsafe_allow_html=True)
 
-try:
-    from lookalike import REFERENCE_FIRM, find_lookalikes
+# ── Tab 1: Alle Leads — interactive dataframe + detail cards ───────────────
+with tab1:
+    if not leads:
+        st.markdown("""
+<div class="empty"><div class="empty-icon">🏗️</div>
+<div class="empty-text">Keine Leads gefunden.</div>
+<div class="empty-sub">Mindest-Score senken oder Live-Suche starten.</div></div>
+""", unsafe_allow_html=True)
+    else:
+        # ── Dataframe overview ──
+        import pandas as pd
+        rows = []
+        for l in leads:
+            city_v = l.get("city") or ""
+            bl_v   = l.get("bundesland") or ""
+            rows.append({
+                "Projektname":  l.get("project_name") or "—",
+                "Standort":     city_v + (f", {bl_v}" if bl_v else ""),
+                "Projekttyp":   l.get("project_type") or "—",
+                "Architekt":    l.get("architect_firm") or "—",
+                "Relevanz":     l.get("relevance_score", 0),
+                "Gesehen":      l.get("times_seen", 1),
+                "Quelle":       l.get("source_url") or "",
+            })
+        df = pd.DataFrame(rows)
 
-    st.markdown(f"""
+        st.dataframe(
+            df,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Relevanz": st.column_config.ProgressColumn(
+                    "Relevanz",
+                    min_value=0,
+                    max_value=100,
+                    format="%d",
+                ),
+                "Quelle": st.column_config.LinkColumn(
+                    "Quelle",
+                    display_text="Öffnen ↗",
+                ),
+                "Gesehen": st.column_config.NumberColumn(
+                    "Gesehen ×",
+                    help="Wie oft dieser Lead bei der Suche aufgetaucht ist",
+                ),
+            },
+        )
+
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown('<div class="section-title">Details</div>', unsafe_allow_html=True)
+        render_lead_cards(leads)
+
+# ── Tab 2: Top-Leads ───────────────────────────────────────────────────────
+with tab2:
+    if not top_leads:
+        st.info("Noch keine Top-Leads (Score ≥ 70). Starte eine Live-Suche oder senke den Filter.")
+    else:
+        render_lead_cards(top_leads)
+
+# ── Tab 3: Digitale Zwillinge ──────────────────────────────────────────────
+with tab3:
+    try:
+        from lookalike import REFERENCE_FIRM, find_lookalikes
+
+        st.markdown(f"""
 <div class="ref-card">
   <span style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:0.06em">Referenzfirma</span><br>
   <span style="font-size:15px;font-weight:700;color:#111">{REFERENCE_FIRM['firm_name']}</span>
@@ -602,29 +656,25 @@ try:
 </div>
 """, unsafe_allow_html=True)
 
-    if all_leads:
-        matches = find_lookalikes(REFERENCE_FIRM, all_leads, top_n=3)
-        if matches:
-            for m in matches:
-                ms  = m.get("match_score", 0)
-                cls = "match-green" if ms >= 50 else "match-amber"
-                st.markdown(f"""
+        if all_leads:
+            matches = find_lookalikes(REFERENCE_FIRM, all_leads, top_n=3)
+            if matches:
+                for m in matches:
+                    ms  = m.get("match_score", 0)
+                    cls = "match-green" if ms >= 50 else "match-amber"
+                    st.markdown(f"""
 <div class="match-card">
-  <div class="match-score-circle {cls}">
-    {ms}<div class="match-score-sub">/100</div>
-  </div>
+  <div class="match-score-circle {cls}">{ms}<div class="match-score-sub">/100</div></div>
   <div>
     <div style="font-size:14px;font-weight:700;color:var(--text)">{m.get('project_name','—')}</div>
-    <div style="font-size:12px;color:var(--muted);margin-top:2px">
-      {m.get('city','—')} · {m.get('bundesland','—')} · {m.get('project_type','—')}
-    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:2px">{m.get('city','—')} · {m.get('bundesland','—')} · {m.get('project_type','—')}</div>
     <div style="font-size:12px;color:var(--text);margin-top:6px">✓ {m.get('match_reason','')}</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
+            else:
+                st.info("Keine passenden Leads für die Referenzfirma gefunden.")
         else:
-            st.info("Keine passenden Leads für die Referenzfirma gefunden.")
-    else:
-        st.info("Keine Leads geladen.")
-except Exception as e:
-    st.warning(f"Lookalike-Matching nicht verfügbar: {e}")
+            st.info("Keine Leads geladen.")
+    except Exception as e:
+        st.warning(f"Lookalike-Matching nicht verfügbar: {e}")
