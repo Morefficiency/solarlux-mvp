@@ -92,6 +92,12 @@ st.markdown("""
 # ---------------------------------------------------------------------------
 st.markdown("""
 <div class="sl-header">
+  <svg width="44" height="36" viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:3px">
+    <!-- left panel: outer top-left protrudes, leans away from center -->
+    <polygon points="0,5 19,2 19,34 0,31" fill="#8c8c8c"/>
+    <!-- right panel: mirror -->
+    <polygon points="25,2 44,5 44,31 25,34" fill="#8c8c8c"/>
+  </svg>
   <div>
     <div class="sl-logo">SOLARLUX</div>
     <div class="sl-tagline">Lead Intelligence · Construction project radar for DACH &amp; Europe</div>
