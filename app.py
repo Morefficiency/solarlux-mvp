@@ -18,93 +18,198 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------------------------
-# Global CSS
+# CSS
 # ---------------------------------------------------------------------------
 st.markdown("""
 <style>
+  /* ── Globals ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
   :root {
-    --sl-red:   #E30613;
-    --green:    #1a7a4a;
-    --amber:    #b85c00;
-    --grey:     #666;
-    --bg-green: #e8f5ee;
-    --bg-amber: #fff4e5;
-    --bg-grey:  #f2f2f2;
-  }
-
-  /* Header */
-  .sl-header {
-    display: flex; align-items: center; gap: 14px;
-    padding: 10px 0 18px 0;
-    border-bottom: 3px solid var(--sl-red);
-    margin-bottom: 22px;
-  }
-  .sl-logo    { font-size: 26px; font-weight: 900; color: var(--sl-red); letter-spacing: -1px; }
-  .sl-tagline { font-size: 12px; color: #777; margin-top: 2px; }
-
-  /* Metric cards */
-  div[data-testid="metric-container"] {
-    background: #fafafa; border-radius: 8px;
-    padding: 12px 16px; border-left: 4px solid var(--sl-red);
-  }
-
-  /* Relevance badges */
-  .badge {
-    display: inline-block; border-radius: 5px;
-    padding: 2px 10px; font-size: 13px; font-weight: 700;
-    line-height: 1.6;
-  }
-  .badge-green { background: var(--bg-green); color: var(--green); }
-  .badge-amber { background: var(--bg-amber); color: var(--amber); }
-  .badge-grey  { background: var(--bg-grey);  color: var(--grey);  }
-
-  /* Reference firm card */
-  .ref-card {
-    background: #fff8f8; border: 1px solid #f5c0c0;
-    border-radius: 8px; padding: 14px; margin-bottom: 14px;
-  }
-
-  /* Lookalike match card */
-  .match-card {
-    background: #fafafa; border-radius: 8px;
-    padding: 12px 16px; border-left: 3px solid #ccc;
-    margin-bottom: 8px;
-  }
-
-  /* Sidebar section labels */
-  .sidebar-section {
-    font-size: 11px; font-weight: 700; color: #999;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin: 14px 0 6px 0;
-  }
-
-  /* Empty state */
-  .empty-state {
-    text-align: center; padding: 48px 0; color: #aaa; font-size: 15px;
+    --red:    #E30613;
+    --green:  #16a34a;
+    --amber:  #d97706;
+    --grey:   #6b7280;
+    --bg:     #f9fafb;
+    --card:   #ffffff;
+    --border: #e5e7eb;
+    --text:   #111827;
+    --muted:  #6b7280;
   }
 
   footer { visibility: hidden; }
-</style>
-""", unsafe_allow_html=True)
+  #MainMenu { visibility: hidden; }
 
-# ---------------------------------------------------------------------------
-# Page header
-# ---------------------------------------------------------------------------
-st.markdown("""
-<div class="sl-header">
-  <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:3px">
-    <!-- left panel: leans outward left -->
-    <polygon points="0,5 14,2 14,34 0,31" fill="#8c8c8c"/>
-    <!-- middle panel: straight -->
-    <polygon points="17,2 29,2 29,34 17,34" fill="#8c8c8c"/>
-    <!-- right panel: leans outward right -->
-    <polygon points="32,2 52,5 52,31 32,34" fill="#8c8c8c"/>
-  </svg>
-  <div>
-    <div class="sl-logo">SOLARLUX</div>
-    <div class="sl-tagline">Lead Intelligence · Construction project radar for DACH &amp; Europe</div>
-  </div>
-</div>
+  /* ── Header ── */
+  .sl-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 0 20px 0;
+  }
+  .sl-brand {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .sl-logo {
+    font-size: 22px; font-weight: 800; color: var(--red);
+    letter-spacing: -0.5px; line-height: 1;
+  }
+  .sl-tagline {
+    font-size: 11px; color: var(--muted); font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .sl-divider {
+    height: 2px; background: var(--red);
+    border-radius: 1px; margin-bottom: 24px;
+  }
+
+  /* ── Stat cards ── */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .stat-label {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+  .stat-value {
+    font-size: 28px; font-weight: 800; color: var(--text); line-height: 1;
+  }
+  .stat-sub {
+    font-size: 11px; color: var(--muted); margin-top: 4px;
+  }
+  .stat-live  { color: var(--green); }
+  .stat-demo  { color: var(--amber); }
+
+  /* ── Section title ── */
+  .section-title {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 14px 0;
+  }
+
+  /* ── Lead cards (expander styling) ── */
+  div[data-testid="stExpander"] {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    margin-bottom: 8px !important;
+    overflow: hidden;
+  }
+  div[data-testid="stExpander"]:hover {
+    border-color: #d1d5db !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  div[data-testid="stExpander"] summary {
+    padding: 14px 18px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+  }
+  div[data-testid="stExpander"] summary:hover {
+    background: var(--bg) !important;
+  }
+  div[data-testid="stExpander"] > details > div {
+    padding: 0 18px 18px 18px !important;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Score dot ── */
+  .dot {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    font-size: 12px; font-weight: 800; flex-shrink: 0;
+  }
+  .dot-green { background: #dcfce7; color: var(--green); }
+  .dot-amber { background: #fef3c7; color: var(--amber); }
+  .dot-grey  { background: #f3f4f6; color: var(--grey);  }
+
+  /* ── Chip tags ── */
+  .chip {
+    display: inline-block; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 2px 10px; font-size: 11px; font-weight: 500;
+    color: var(--muted); margin-right: 4px;
+  }
+  .chip-red { background: #fff1f2; border-color: #fecdd3; color: var(--red); }
+
+  /* ── Detail grid ── */
+  .detail-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px 24px; margin: 14px 0;
+  }
+  .detail-row { display: flex; flex-direction: column; gap: 1px; }
+  .detail-label { font-size: 10px; font-weight: 600; color: var(--muted);
+                  text-transform: uppercase; letter-spacing: 0.06em; }
+  .detail-value { font-size: 13px; color: var(--text); font-weight: 500; }
+
+  /* ── Actor pill ── */
+  .actor-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 10px;
+    font-size: 12px; margin: 3px 3px 3px 0;
+  }
+  .actor-role {
+    font-size: 10px; font-weight: 600; color: var(--red);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+
+  /* ── Info banner ── */
+  .info-banner {
+    background: #fffbeb; border: 1px solid #fde68a;
+    border-radius: 10px; padding: 10px 16px;
+    font-size: 13px; color: #92400e; margin-bottom: 20px;
+  }
+
+  /* ── Empty state ── */
+  .empty {
+    text-align: center; padding: 60px 0; color: var(--muted);
+  }
+  .empty-icon { font-size: 36px; margin-bottom: 10px; }
+  .empty-text { font-size: 15px; font-weight: 500; }
+  .empty-sub  { font-size: 13px; margin-top: 4px; }
+
+  /* ── Lookalike section ── */
+  .match-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .match-score-circle {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; flex-shrink: 0;
+    font-size: 18px; font-weight: 800; line-height: 1;
+  }
+  .match-score-sub { font-size: 9px; font-weight: 500; opacity: 0.7; }
+  .match-green { background: #dcfce7; color: var(--green); }
+  .match-amber { background: #fef3c7; color: var(--amber); }
+  .ref-card {
+    background: #fff1f2; border: 1px solid #fecdd3;
+    border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;
+  }
+
+  /* ── Sidebar ── */
+  section[data-testid="stSidebar"] {
+    background: var(--card) !important;
+    border-right: 1px solid var(--border) !important;
+  }
+  .sb-label {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin: 20px 0 8px 0;
+  }
+  .sb-stat {
+    font-size: 13px; color: var(--text); line-height: 1.7;
+  }
+</style>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
@@ -156,65 +261,78 @@ def get_stats() -> dict:
                 "newest_last_seen": "—", "size_kb": 0, "cap": 500}
 
 
-def relevance_badge(score: int) -> str:
+def score_dot(score: int) -> str:
     if score >= 70:
-        css, label = "badge-green", f"● {score}"
+        css = "dot-green"
     elif score >= 40:
-        css, label = "badge-amber", f"◑ {score}"
+        css = "dot-amber"
     else:
-        css, label = "badge-grey",  f"○ {score}"
-    return f'<span class="badge {css}">{label}</span>'
+        css = "dot-grey"
+    return f'<div class="dot {css}">{score}</div>'
+
+
+def score_color(score: int) -> str:
+    if score >= 70:   return "var(--green)"
+    elif score >= 40: return "var(--amber)"
+    else:             return "var(--grey)"
 
 
 # ---------------------------------------------------------------------------
-# Sidebar — 3 grouped sections
+# Sidebar
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    # ── 1. Data Source ────────────────────────────────────────────────────
-    st.markdown('<div class="sidebar-section">Data Source</div>', unsafe_allow_html=True)
-    run_scrape = st.button("🔄 Run live scrape", use_container_width=True,
-                           help="Fetches from BauNetz.de · competitionline · architektensuche (~60–90 s)")
-
-    # ── 2. Filters ───────────────────────────────────────────────────────
-    st.markdown('<div class="sidebar-section">Filters</div>', unsafe_allow_html=True)
-    min_score = st.slider("Min. relevance score", 0, 100, 0, step=5)
-    filter_german = st.checkbox("German projects only (Bundesland set)")
-    sort_by = st.selectbox("Sort by", ["Relevance ↓", "Last seen ↓", "First seen ↓"])
-
-    # ── 3. Cache ─────────────────────────────────────────────────────────
-    st.markdown('<div class="sidebar-section">Cache</div>', unsafe_allow_html=True)
-    stats = get_stats()
-    st.markdown(
-        f"**{stats['total_records']} / {stats['cap']}** records  \n"
-        f"Last updated: `{stats['newest_last_seen'] or '—'}`  \n"
-        f"DB size: `{stats['size_kb']} KB`"
-    )
+    st.markdown("""
+    <div style="padding:16px 0 4px 0">
+      <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead Intelligence</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.divider()
-    confirm_clear = st.checkbox("⚠️ Confirm cache clear", value=False,
-                                help="Check this box to enable the clear button")
-    clear_btn = st.button("🗑️ Clear cache", disabled=not confirm_clear,
-                          use_container_width=True, type="secondary")
-    if clear_btn and confirm_clear:
+
+    # Data source
+    st.markdown('<div class="sb-label">Data</div>', unsafe_allow_html=True)
+    run_scrape = st.button("🔄 Run live scrape", use_container_width=True,
+                           help="BauNetz.de · competitionline · architektensuche (~60–90 s)")
+
+    # Filters
+    st.markdown('<div class="sb-label">Filters</div>', unsafe_allow_html=True)
+    min_score = st.slider("Min. score", 0, 100, 0, step=5)
+    filter_german = st.checkbox("Germany only")
+    sort_by = st.selectbox("Sort by", ["Relevance ↓", "Last seen ↓", "First seen ↓"])
+
+    # Cache
+    st.markdown('<div class="sb-label">Cache</div>', unsafe_allow_html=True)
+    stats = get_stats()
+    last_upd = (stats["newest_last_seen"] or "—")[:16].replace("T", " ")
+    st.markdown(
+        f'<div class="sb-stat">'
+        f'<b>{stats["total_records"]}</b> / {stats["cap"]} records<br>'
+        f'Updated: {last_upd}<br>'
+        f'Size: {stats["size_kb"]} KB'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown("")
+    confirm_clear = st.checkbox("Confirm clear", value=False)
+    if st.button("🗑️ Clear cache", disabled=not confirm_clear, use_container_width=True):
         from db import clear_cache, init_db
-        clear_cache()
-        init_db()
+        clear_cache(); init_db()
         st.success("Cache cleared.")
         time.sleep(0.8)
         st.rerun()
 
-    # ── Scoring legend ────────────────────────────────────────────────────
-    st.divider()
-    st.markdown("""
-**Scoring rules**
-| Points | Criterion |
+    # Scoring legend (collapsed)
+    with st.expander("Scoring rules"):
+        st.markdown("""
+| Pts | Criterion |
 |---|---|
-| +45 | MFH / Hotel / Büro / Mixed-use |
-| +25 | Umbau / Schule / Culture |
-| +20 | German project (Bundesland set) |
-| +15 | Architect firm identified |
+| +45 | MFH / Hotel / Office / Mixed |
+| +25 | Renovation / School / Culture |
+| +20 | German project |
+| +15 | Architect identified |
 | +10 | Bauherr identified |
-| +10 | Scale ≥ 2,000 m² or ≥ 20 units |
+| +10 | Scale ≥ 2 000 m² / 20 units |
 """)
 
 # ---------------------------------------------------------------------------
@@ -226,14 +344,13 @@ if run_scrape:
         st.error("❌ No Anthropic API key found. Add `ANTHROPIC_API_KEY` to Streamlit Secrets.")
     else:
         os.environ["ANTHROPIC_API_KEY"] = api_key
-        with st.spinner("Scraping in progress — this takes ~60–90 seconds…"):
+        with st.spinner("Scraping — ~60–90 seconds…"):
             try:
                 from pipeline import run_pipeline
                 summary = run_pipeline(limit_per_source=15)
                 st.success(
-                    f"✅ Done — **{summary['inserted']}** new leads added, "
-                    f"**{summary['updated']}** updated. "
-                    f"Cache: {summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} records."
+                    f"✅ {summary['inserted']} new · {summary['updated']} updated · "
+                    f"{summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} in cache"
                 )
                 time.sleep(1)
                 st.rerun()
@@ -241,122 +358,186 @@ if run_scrape:
                 st.error(f"Scrape failed: {e}")
 
 # ---------------------------------------------------------------------------
-# Load data — DB first, seed fallback when empty
+# Load data
 # ---------------------------------------------------------------------------
-db_leads = load_db_leads(min_score=0)
+db_leads  = load_db_leads(min_score=0)
 using_seed = not db_leads
 all_leads  = db_leads if db_leads else load_seed_data()
 
-# Apply filters
 leads = [l for l in all_leads if l.get("relevance_score", 0) >= min_score]
 if filter_german:
     leads = [l for l in leads if l.get("bundesland")]
 
-# Apply sort
 if sort_by == "Last seen ↓":
     leads.sort(key=lambda l: l.get("last_seen") or "", reverse=True)
 elif sort_by == "First seen ↓":
     leads.sort(key=lambda l: l.get("first_seen") or "", reverse=True)
-# default: already sorted by relevance_score DESC from DB / seed
 
 # ---------------------------------------------------------------------------
-# Metrics row
+# Header
 # ---------------------------------------------------------------------------
-total      = len(all_leads)
-avg_score  = round(sum(l.get("relevance_score", 0) for l in all_leads) / total, 1) if total else 0
-hot_count  = sum(1 for l in all_leads if l.get("relevance_score", 0) >= 70)
-cache_disp = (f"{stats['total_records']} / {stats['cap']}" if not using_seed
-              else "seed data")
+st.markdown("""
+<div class="sl-header">
+  <svg width="48" height="34" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,5 14,2 14,34 0,31" fill="#8c8c8c"/>
+    <polygon points="17,2 29,2 29,34 17,34" fill="#8c8c8c"/>
+    <polygon points="32,2 52,5 52,31 32,34" fill="#8c8c8c"/>
+  </svg>
+  <div class="sl-brand">
+    <div class="sl-logo">SOLARLUX</div>
+    <div class="sl-tagline">Lead Intelligence &nbsp;·&nbsp; Construction project radar for DACH &amp; Europe</div>
+  </div>
+</div>
+<div class="sl-divider"></div>
+""", unsafe_allow_html=True)
 
-c1, c2, c3, c4 = st.columns(4)
-c1.metric("Total leads",     total)
-c2.metric("Avg. relevance",  avg_score)
-c3.metric("High-value (≥70)", hot_count)
-c4.metric("Cache", cache_disp,
-          delta="live" if not using_seed else "demo fallback",
-          delta_color="normal" if not using_seed else "off")
+# ---------------------------------------------------------------------------
+# Stat cards
+# ---------------------------------------------------------------------------
+total     = len(all_leads)
+avg_score = round(sum(l.get("relevance_score", 0) for l in all_leads) / total, 1) if total else 0
+hot       = sum(1 for l in all_leads if l.get("relevance_score", 0) >= 70)
+src_label = f"{stats['total_records']} / {stats['cap']}" if not using_seed else "Demo"
+src_sub   = "live cache" if not using_seed else "seed fallback"
+src_cls   = "stat-live" if not using_seed else "stat-demo"
+
+st.markdown(f"""
+<div class="stat-row">
+  <div class="stat-card">
+    <div class="stat-label">Total leads</div>
+    <div class="stat-value">{total}</div>
+    <div class="stat-sub">across all sources</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Avg. relevance</div>
+    <div class="stat-value">{avg_score}</div>
+    <div class="stat-sub">out of 100</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">High-value</div>
+    <div class="stat-value">{hot}</div>
+    <div class="stat-sub">score ≥ 70</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Cache</div>
+    <div class="stat-value" style="font-size:22px">{src_label}</div>
+    <div class="stat-sub {src_cls}">{src_sub}</div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
 if using_seed:
-    st.info("📦 Showing demo data (seed_data.json). Run a live scrape to populate the cache.")
-
-st.divider()
+    st.markdown(
+        '<div class="info-banner">📦 Showing demo data — run a live scrape to populate the cache.</div>',
+        unsafe_allow_html=True,
+    )
 
 # ---------------------------------------------------------------------------
-# Leads table
+# Leads list
 # ---------------------------------------------------------------------------
+st.markdown(f'<div class="section-title">{len(leads)} leads &nbsp;·&nbsp; score ≥ {min_score}'
+            + (" &nbsp;·&nbsp; Germany only" if filter_german else "")
+            + f" &nbsp;·&nbsp; {sort_by}</div>", unsafe_allow_html=True)
+
 if not leads:
     st.markdown("""
-<div class="empty-state">
-  🏗️ No leads match your filters.<br>
-  <small>Lower the min. relevance slider or run a live scrape.</small>
+<div class="empty">
+  <div class="empty-icon">🏗️</div>
+  <div class="empty-text">No leads match your filters.</div>
+  <div class="empty-sub">Lower the min. score or run a live scrape.</div>
 </div>
 """, unsafe_allow_html=True)
 else:
-    st.markdown(f"**{len(leads)} leads** · score ≥ {min_score}"
-                + (" · German only" if filter_german else "")
-                + f" · {sort_by}")
-    st.markdown("")
-
     for lead in leads:
-        score    = lead.get("relevance_score", 0)
-        name     = lead.get("project_name") or "Unknown project"
-        city     = lead.get("city") or "—"
-        bl       = lead.get("bundesland") or "—"
-        ptype    = lead.get("project_type") or "—"
-        arch     = lead.get("architect_firm") or "—"
-        source   = lead.get("source") or "—"
-        actors   = lead.get("actors") or []
-        t_seen   = lead.get("times_seen", 1)
+        score  = lead.get("relevance_score", 0)
+        name   = lead.get("project_name") or "Unknown project"
+        city   = lead.get("city") or "—"
+        bl     = lead.get("bundesland") or ""
+        ptype  = lead.get("project_type") or "—"
+        arch   = lead.get("architect_firm") or "—"
+        actors = lead.get("actors") or []
+        t_seen = lead.get("times_seen", 1)
 
-        badge_html = relevance_badge(score)
-        expander_label = f"{name}  ·  {city}  ·  {ptype}"
+        # Score indicator prefix in label
+        if score >= 70:   dot = "●"
+        elif score >= 40: dot = "◑"
+        else:             dot = "○"
 
-        with st.expander(expander_label, expanded=(score >= 70)):
-            # Badge + times_seen in header area
+        location = f"{city}" + (f", {bl}" if bl and bl != "—" else "")
+        label = f"{dot} {score}   {name}   ·   {location}   ·   {ptype}"
+
+        with st.expander(label, expanded=False):
+            # Top row: score + chips
+            arch_chip  = f'<span class="chip">{arch}</span>' if arch != "—" else ""
+            bauherr    = lead.get("bauherr") or ""
+            bauherr_chip = f'<span class="chip">{bauherr}</span>' if bauherr else ""
+            seen_chip  = f'<span class="chip">Seen {t_seen}×</span>'
+            src_chip   = f'<span class="chip chip-red">{lead.get("source") or "—"}</span>'
+
             st.markdown(
-                f"{badge_html} &nbsp; "
-                f"<span style='font-size:12px;color:#888'>seen {t_seen}×</span>",
+                f'<div style="margin:12px 0 4px 0">{arch_chip}{bauherr_chip}{seen_chip}{src_chip}</div>',
                 unsafe_allow_html=True,
             )
-            st.markdown("")
 
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown(f"**Project:** {name}")
-                st.markdown(f"**City:** {city} &nbsp; **Bundesland:** {bl}")
-                st.markdown(f"**Type:** {ptype}")
-                st.markdown(f"**Relevance score:** {score} / 100")
-                st.markdown(f"**Source:** {source}")
-            with col2:
-                st.markdown(f"**Architect:** {arch}")
-                st.markdown(f"**Bauherr:** {lead.get('bauherr') or '—'}")
-                st.markdown(f"**Completion:** {lead.get('estimated_completion') or '—'}")
-                st.markdown(f"**Scale:** {lead.get('scale_units_or_sqm') or '—'}")
-                url = lead.get("source_url")
-                if url:
-                    st.markdown(f"**Link:** [{url[:55]}…]({url})")
+            # Detail grid
+            completion = lead.get("estimated_completion") or "—"
+            scale      = lead.get("scale_units_or_sqm") or "—"
+            url        = lead.get("source_url") or ""
+            link_html  = f'<a href="{url}" target="_blank" style="color:var(--red);font-size:12px">Open source ↗</a>' if url else "—"
 
-            # Actor table
+            st.markdown(f"""
+<div class="detail-grid">
+  <div class="detail-row">
+    <span class="detail-label">Project type</span>
+    <span class="detail-value">{ptype}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Location</span>
+    <span class="detail-value">{location}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Completion</span>
+    <span class="detail-value">{completion}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Scale</span>
+    <span class="detail-value">{scale}</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Relevance score</span>
+    <span class="detail-value" style="color:{score_color(score)};font-weight:700">{score} / 100</span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Source link</span>
+    <span class="detail-value">{link_html}</span>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+            # Actors
             if actors:
-                st.markdown("**Actors:**")
-                actor_rows = []
+                st.markdown('<div class="detail-label" style="margin-bottom:6px">People &amp; firms</div>',
+                            unsafe_allow_html=True)
+                pills = ""
                 for a in actors:
-                    actor_rows.append({
-                        "Name":  a.get("name") or "—",
-                        "Role":  a.get("role") or "—",
-                        "Firm":  a.get("firm") or "—",
-                        "Email": a.get("email") or "—",
-                        "Phone": a.get("phone") or "—",
-                    })
-                st.dataframe(actor_rows, use_container_width=True, hide_index=True)
+                    aname = a.get("name") or "—"
+                    arole = a.get("role") or ""
+                    afirm = a.get("firm") or ""
+                    aemail = a.get("email") or ""
+                    extra = ""
+                    if afirm: extra += f" · {afirm}"
+                    if aemail: extra += f' · <a href="mailto:{aemail}" style="color:var(--red)">{aemail}</a>'
+                    pills += f'<div class="actor-pill"><span class="actor-role">{arole}</span><span>{aname}{extra}</span></div>'
+                st.markdown(pills, unsafe_allow_html=True)
 
-                # Outreach email button — only if any actor has email
+                # Outreach email
                 emails = [a.get("email") for a in actors if a.get("email")]
                 if emails:
+                    st.markdown("")
                     btn_key = f"email_{lead.get('source_url','')[:40]}"
                     if st.button("✉️ Generate outreach email", key=btn_key):
-                        actor_name  = next((a.get("name") for a in actors if a.get("email")), "")
-                        actor_firm  = next((a.get("firm") for a in actors if a.get("email")), "")
+                        actor_name = next((a.get("name") for a in actors if a.get("email")), "")
+                        actor_firm = next((a.get("firm") for a in actors if a.get("email")), "")
                         with st.spinner("Generating…"):
                             try:
                                 import anthropic
@@ -374,31 +555,33 @@ else:
                                     max_tokens=300,
                                     messages=[{"role": "user", "content": prompt}],
                                 )
-                                st.text_area("Outreach email (DE)", msg.content[0].text, height=200)
+                                st.text_area("Outreach email (DE)", msg.content[0].text, height=180)
                             except Exception as e:
                                 st.error(f"Generation failed: {e}")
 
-            fs = (lead.get("first_seen") or "")[:19].replace("T", " ")
-            ls = (lead.get("last_seen")  or "")[:19].replace("T", " ")
-            st.caption(f"First seen: {fs or '—'} UTC · Last seen: {ls or '—'} UTC")
+            # Timestamps
+            fs = (lead.get("first_seen") or "")[:16].replace("T", " ")
+            ls = (lead.get("last_seen")  or "")[:16].replace("T", " ")
+            st.markdown(
+                f'<div style="font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;'
+                f'border-top:1px solid var(--border)">First seen: {fs or "—"} UTC &nbsp;·&nbsp; Last seen: {ls or "—"} UTC</div>',
+                unsafe_allow_html=True,
+            )
 
 # ---------------------------------------------------------------------------
-# Digitale Zwillinge — Lookalike Matching
+# Digital Twins — Lookalike Matching
 # ---------------------------------------------------------------------------
-st.divider()
-st.markdown("## 🔍 Digital Twins — Lookalike Matching")
-st.markdown("Leads that best match a reference firm's profile.")
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown('<div class="section-title">Digital Twins — Lookalike Matching</div>', unsafe_allow_html=True)
 
 try:
     from lookalike import REFERENCE_FIRM, find_lookalikes
 
     st.markdown(f"""
 <div class="ref-card">
-<strong>Reference firm</strong><br>
-<b>{REFERENCE_FIRM['firm_name']}</b> &nbsp;·&nbsp;
-{REFERENCE_FIRM['city']} &nbsp;·&nbsp;
-Focus: <em>{REFERENCE_FIRM['project_type']}</em> &nbsp;·&nbsp;
-Typical scale: <em>{REFERENCE_FIRM['typical_scale']}</em>
+  <span style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:0.06em">Reference firm</span><br>
+  <span style="font-size:15px;font-weight:700;color:#111">{REFERENCE_FIRM['firm_name']}</span>
+  <span style="color:#9ca3af;font-size:13px"> · {REFERENCE_FIRM['city']} · {REFERENCE_FIRM['project_type']} · {REFERENCE_FIRM['typical_scale']}</span>
 </div>
 """, unsafe_allow_html=True)
 
@@ -406,18 +589,20 @@ Typical scale: <em>{REFERENCE_FIRM['typical_scale']}</em>
         matches = find_lookalikes(REFERENCE_FIRM, all_leads, top_n=3)
         if matches:
             for m in matches:
-                ms     = m.get("match_score", 0)
-                color  = "#1a7a4a" if ms >= 50 else "#b85c00"
+                ms  = m.get("match_score", 0)
+                cls = "match-green" if ms >= 50 else "match-amber"
                 st.markdown(f"""
 <div class="match-card">
-<span style="color:{color};font-weight:700;font-size:20px">{ms}</span>
-<span style="font-size:12px;color:#999">/100</span>
-&nbsp;&nbsp;
-<strong>{m.get('project_name','—')}</strong>
-&nbsp;·&nbsp; {m.get('city','—')} ({m.get('bundesland','—')})
-&nbsp;·&nbsp; <em>{m.get('project_type','—')}</em><br>
-<span style="font-size:12px;color:#555">✓ {m.get('match_reason','')}</span>
-<span style="font-size:11px;color:#bbb;margin-left:12px">Source: {m.get('source','—')}</span>
+  <div class="match-score-circle {cls}">
+    {ms}<div class="match-score-sub">/100</div>
+  </div>
+  <div>
+    <div style="font-size:14px;font-weight:700;color:var(--text)">{m.get('project_name','—')}</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:2px">
+      {m.get('city','—')} · {m.get('bundesland','—')} · {m.get('project_type','—')}
+    </div>
+    <div style="font-size:12px;color:var(--text);margin-top:6px">✓ {m.get('match_reason','')}</div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
         else:
