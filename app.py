@@ -11,7 +11,7 @@ from pathlib import Path
 import streamlit as st
 
 st.set_page_config(
-    page_title="Solarlux Lead Intelligence",
+    page_title="Solarlux Lead-Generierung",
     page_icon="🏗️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -284,22 +284,22 @@ with st.sidebar:
     st.markdown("""
     <div style="padding:16px 0 4px 0">
       <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
-      <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead Intelligence</div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead-Generierung</div>
     </div>
     """, unsafe_allow_html=True)
 
     st.divider()
 
-    # Data source
-    st.markdown('<div class="sb-label">Data</div>', unsafe_allow_html=True)
-    run_scrape = st.button("🔄 Run live scrape", use_container_width=True,
-                           help="BauNetz.de · competitionline · architektensuche (~60–90 s)")
+    # Daten
+    st.markdown('<div class="sb-label">Daten</div>', unsafe_allow_html=True)
+    run_scrape = st.button("🔄 Live-Suche starten", use_container_width=True,
+                           help="BauNetz.de · competitionline · architektensuche (~60–90 Sek.)")
 
-    # Filters
-    st.markdown('<div class="sb-label">Filters</div>', unsafe_allow_html=True)
-    min_score = st.slider("Min. score", 0, 100, 0, step=5)
-    filter_german = st.checkbox("Germany only")
-    sort_by = st.selectbox("Sort by", ["Relevance ↓", "Last seen ↓", "First seen ↓"])
+    # Filter
+    st.markdown('<div class="sb-label">Filter</div>', unsafe_allow_html=True)
+    min_score = st.slider("Mindest-Score", 0, 100, 0, step=5)
+    filter_german = st.checkbox("Nur Deutschland")
+    sort_by = st.selectbox("Sortieren nach", ["Relevanz ↓", "Zuletzt gesehen ↓", "Erstmals gesehen ↓"])
 
     # Cache
     st.markdown('<div class="sb-label">Cache</div>', unsafe_allow_html=True)
@@ -307,32 +307,32 @@ with st.sidebar:
     last_upd = (stats["newest_last_seen"] or "—")[:16].replace("T", " ")
     st.markdown(
         f'<div class="sb-stat">'
-        f'<b>{stats["total_records"]}</b> / {stats["cap"]} records<br>'
-        f'Updated: {last_upd}<br>'
-        f'Size: {stats["size_kb"]} KB'
+        f'<b>{stats["total_records"]}</b> / {stats["cap"]} Einträge<br>'
+        f'Aktualisiert: {last_upd}<br>'
+        f'Größe: {stats["size_kb"]} KB'
         f'</div>',
         unsafe_allow_html=True,
     )
     st.markdown("")
-    confirm_clear = st.checkbox("Confirm clear", value=False)
-    if st.button("🗑️ Clear cache", disabled=not confirm_clear, use_container_width=True):
+    confirm_clear = st.checkbox("Löschen bestätigen", value=False)
+    if st.button("🗑️ Cache leeren", disabled=not confirm_clear, use_container_width=True):
         from db import clear_cache, init_db
         clear_cache(); init_db()
-        st.success("Cache cleared.")
+        st.success("Cache wurde geleert.")
         time.sleep(0.8)
         st.rerun()
 
-    # Scoring legend (collapsed)
-    with st.expander("Scoring rules"):
+    # Bewertungsregeln (eingeklappt)
+    with st.expander("Bewertungsregeln"):
         st.markdown("""
-| Pts | Criterion |
+| Pkt | Kriterium |
 |---|---|
-| +45 | MFH / Hotel / Office / Mixed |
-| +25 | Renovation / School / Culture |
-| +20 | German project |
-| +15 | Architect identified |
-| +10 | Bauherr identified |
-| +10 | Scale ≥ 2 000 m² / 20 units |
+| +45 | MFH / Hotel / Büro / Mixed-Use |
+| +25 | Umbau / Schule / Kultur |
+| +20 | Deutsches Projekt |
+| +15 | Architekturbüro bekannt |
+| +10 | Bauherr bekannt |
+| +10 | Größe ≥ 2.000 m² / 20 WE |
 """)
 
 # ---------------------------------------------------------------------------
@@ -341,21 +341,21 @@ with st.sidebar:
 if run_scrape:
     api_key = get_api_key()
     if not api_key:
-        st.error("❌ No Anthropic API key found. Add `ANTHROPIC_API_KEY` to Streamlit Secrets.")
+        st.error("❌ Kein Anthropic API-Key gefunden. Bitte `ANTHROPIC_API_KEY` in den Streamlit-Secrets hinterlegen.")
     else:
         os.environ["ANTHROPIC_API_KEY"] = api_key
-        with st.spinner("Scraping — ~60–90 seconds…"):
+        with st.spinner("Suche läuft — ca. 60–90 Sekunden…"):
             try:
                 from pipeline import run_pipeline
                 summary = run_pipeline(limit_per_source=15)
                 st.success(
-                    f"✅ {summary['inserted']} new · {summary['updated']} updated · "
-                    f"{summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} in cache"
+                    f"✅ {summary['inserted']} neu · {summary['updated']} aktualisiert · "
+                    f"{summary['cache_stats']['total_records']} / {summary['cache_stats']['cap']} im Cache"
                 )
                 time.sleep(1)
                 st.rerun()
             except Exception as e:
-                st.error(f"Scrape failed: {e}")
+                st.error(f"Suche fehlgeschlagen: {e}")
 
 # ---------------------------------------------------------------------------
 # Load data
@@ -368,9 +368,9 @@ leads = [l for l in all_leads if l.get("relevance_score", 0) >= min_score]
 if filter_german:
     leads = [l for l in leads if l.get("bundesland")]
 
-if sort_by == "Last seen ↓":
+if sort_by == "Zuletzt gesehen ↓":
     leads.sort(key=lambda l: l.get("last_seen") or "", reverse=True)
-elif sort_by == "First seen ↓":
+elif sort_by == "Erstmals gesehen ↓":
     leads.sort(key=lambda l: l.get("first_seen") or "", reverse=True)
 
 # ---------------------------------------------------------------------------
@@ -385,7 +385,7 @@ st.markdown("""
   </svg>
   <div class="sl-brand">
     <div class="sl-logo">SOLARLUX</div>
-    <div class="sl-tagline">Lead Intelligence &nbsp;·&nbsp; Construction project radar for DACH &amp; Europe</div>
+    <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
   </div>
 </div>
 <div class="sl-divider"></div>
@@ -398,25 +398,25 @@ total     = len(all_leads)
 avg_score = round(sum(l.get("relevance_score", 0) for l in all_leads) / total, 1) if total else 0
 hot       = sum(1 for l in all_leads if l.get("relevance_score", 0) >= 70)
 src_label = f"{stats['total_records']} / {stats['cap']}" if not using_seed else "Demo"
-src_sub   = "live cache" if not using_seed else "seed fallback"
+src_sub   = "Live-Daten" if not using_seed else "Demo-Daten"
 src_cls   = "stat-live" if not using_seed else "stat-demo"
 
 st.markdown(f"""
 <div class="stat-row">
   <div class="stat-card">
-    <div class="stat-label">Total leads</div>
+    <div class="stat-label">Leads gesamt</div>
     <div class="stat-value">{total}</div>
-    <div class="stat-sub">across all sources</div>
+    <div class="stat-sub">aus allen Quellen</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">Avg. relevance</div>
+    <div class="stat-label">Ø Relevanz</div>
     <div class="stat-value">{avg_score}</div>
-    <div class="stat-sub">out of 100</div>
+    <div class="stat-sub">von 100 Punkten</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">High-value</div>
+    <div class="stat-label">Top-Leads</div>
     <div class="stat-value">{hot}</div>
-    <div class="stat-sub">score ≥ 70</div>
+    <div class="stat-sub">Score ≥ 70</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Cache</div>
@@ -428,23 +428,23 @@ st.markdown(f"""
 
 if using_seed:
     st.markdown(
-        '<div class="info-banner">📦 Showing demo data — run a live scrape to populate the cache.</div>',
+        '<div class="info-banner">📦 Demo-Daten werden angezeigt — starte eine Live-Suche, um den Cache zu befüllen.</div>',
         unsafe_allow_html=True,
     )
 
 # ---------------------------------------------------------------------------
 # Leads list
 # ---------------------------------------------------------------------------
-st.markdown(f'<div class="section-title">{len(leads)} leads &nbsp;·&nbsp; score ≥ {min_score}'
-            + (" &nbsp;·&nbsp; Germany only" if filter_german else "")
+st.markdown(f'<div class="section-title">{len(leads)} Leads &nbsp;·&nbsp; Score ≥ {min_score}'
+            + (" &nbsp;·&nbsp; Nur Deutschland" if filter_german else "")
             + f" &nbsp;·&nbsp; {sort_by}</div>", unsafe_allow_html=True)
 
 if not leads:
     st.markdown("""
 <div class="empty">
   <div class="empty-icon">🏗️</div>
-  <div class="empty-text">No leads match your filters.</div>
-  <div class="empty-sub">Lower the min. score or run a live scrape.</div>
+  <div class="empty-text">Keine Leads entsprechen den Filtern.</div>
+  <div class="empty-sub">Mindest-Score senken oder Live-Suche starten.</div>
 </div>
 """, unsafe_allow_html=True)
 else:
@@ -471,7 +471,7 @@ else:
             arch_chip  = f'<span class="chip">{arch}</span>' if arch != "—" else ""
             bauherr    = lead.get("bauherr") or ""
             bauherr_chip = f'<span class="chip">{bauherr}</span>' if bauherr else ""
-            seen_chip  = f'<span class="chip">Seen {t_seen}×</span>'
+            seen_chip  = f'<span class="chip">{t_seen}× gesichtet</span>'
             src_chip   = f'<span class="chip chip-red">{lead.get("source") or "—"}</span>'
 
             st.markdown(
@@ -483,32 +483,32 @@ else:
             completion = lead.get("estimated_completion") or "—"
             scale      = lead.get("scale_units_or_sqm") or "—"
             url        = lead.get("source_url") or ""
-            link_html  = f'<a href="{url}" target="_blank" style="color:var(--red);font-size:12px">Open source ↗</a>' if url else "—"
+            link_html  = f'<a href="{url}" target="_blank" style="color:var(--red);font-size:12px">Quelle öffnen ↗</a>' if url else "—"
 
             st.markdown(f"""
 <div class="detail-grid">
   <div class="detail-row">
-    <span class="detail-label">Project type</span>
+    <span class="detail-label">Projekttyp</span>
     <span class="detail-value">{ptype}</span>
   </div>
   <div class="detail-row">
-    <span class="detail-label">Location</span>
+    <span class="detail-label">Standort</span>
     <span class="detail-value">{location}</span>
   </div>
   <div class="detail-row">
-    <span class="detail-label">Completion</span>
+    <span class="detail-label">Fertigstellung</span>
     <span class="detail-value">{completion}</span>
   </div>
   <div class="detail-row">
-    <span class="detail-label">Scale</span>
+    <span class="detail-label">Größe</span>
     <span class="detail-value">{scale}</span>
   </div>
   <div class="detail-row">
-    <span class="detail-label">Relevance score</span>
+    <span class="detail-label">Relevanz</span>
     <span class="detail-value" style="color:{score_color(score)};font-weight:700">{score} / 100</span>
   </div>
   <div class="detail-row">
-    <span class="detail-label">Source link</span>
+    <span class="detail-label">Quelle</span>
     <span class="detail-value">{link_html}</span>
   </div>
 </div>
@@ -516,7 +516,7 @@ else:
 
             # Actors
             if actors:
-                st.markdown('<div class="detail-label" style="margin-bottom:6px">People &amp; firms</div>',
+                st.markdown('<div class="detail-label" style="margin-bottom:6px">Personen &amp; Firmen</div>',
                             unsafe_allow_html=True)
                 pills = ""
                 for a in actors:
@@ -535,10 +535,10 @@ else:
                 if emails:
                     st.markdown("")
                     btn_key = f"email_{lead.get('source_url','')[:40]}"
-                    if st.button("✉️ Generate outreach email", key=btn_key):
+                    if st.button("✉️ Akquise-E-Mail generieren", key=btn_key):
                         actor_name = next((a.get("name") for a in actors if a.get("email")), "")
                         actor_firm = next((a.get("firm") for a in actors if a.get("email")), "")
-                        with st.spinner("Generating…"):
+                        with st.spinner("Wird generiert…"):
                             try:
                                 import anthropic
                                 client = anthropic.Anthropic(api_key=get_api_key())
@@ -555,16 +555,16 @@ else:
                                     max_tokens=300,
                                     messages=[{"role": "user", "content": prompt}],
                                 )
-                                st.text_area("Outreach email (DE)", msg.content[0].text, height=180)
+                                st.text_area("Akquise-E-Mail", msg.content[0].text, height=180)
                             except Exception as e:
-                                st.error(f"Generation failed: {e}")
+                                st.error(f"Generierung fehlgeschlagen: {e}")
 
             # Timestamps
             fs = (lead.get("first_seen") or "")[:16].replace("T", " ")
             ls = (lead.get("last_seen")  or "")[:16].replace("T", " ")
             st.markdown(
                 f'<div style="font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;'
-                f'border-top:1px solid var(--border)">First seen: {fs or "—"} UTC &nbsp;·&nbsp; Last seen: {ls or "—"} UTC</div>',
+                f'border-top:1px solid var(--border)">Erstmals gesehen: {fs or "—"} UTC &nbsp;·&nbsp; Zuletzt gesehen: {ls or "—"} UTC</div>',
                 unsafe_allow_html=True,
             )
 
@@ -572,14 +572,14 @@ else:
 # Digital Twins — Lookalike Matching
 # ---------------------------------------------------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
-st.markdown('<div class="section-title">Digital Twins — Lookalike Matching</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title">Digitale Zwillinge — Lookalike-Matching</div>', unsafe_allow_html=True)
 
 try:
     from lookalike import REFERENCE_FIRM, find_lookalikes
 
     st.markdown(f"""
 <div class="ref-card">
-  <span style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:0.06em">Reference firm</span><br>
+  <span style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:0.06em">Referenzfirma</span><br>
   <span style="font-size:15px;font-weight:700;color:#111">{REFERENCE_FIRM['firm_name']}</span>
   <span style="color:#9ca3af;font-size:13px"> · {REFERENCE_FIRM['city']} · {REFERENCE_FIRM['project_type']} · {REFERENCE_FIRM['typical_scale']}</span>
 </div>
@@ -606,8 +606,8 @@ try:
 </div>
 """, unsafe_allow_html=True)
         else:
-            st.info("No matches found for the reference firm.")
+            st.info("Keine passenden Leads für die Referenzfirma gefunden.")
     else:
-        st.info("No leads loaded.")
+        st.info("Keine Leads geladen.")
 except Exception as e:
-    st.warning(f"Lookalike matching unavailable: {e}")
+    st.warning(f"Lookalike-Matching nicht verfügbar: {e}")
