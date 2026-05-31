@@ -176,11 +176,10 @@ total = len(all_leads)
 avg_score = round(sum(l.get("relevance_score", 0) for l in all_leads) / total, 1) if total else 0
 hot_count = sum(1 for l in all_leads if l.get("relevance_score", 0) > 70)
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 col1.metric("Leads gesamt", total)
 col2.metric("Ø Relevanz-Score", avg_score)
 col3.metric("Hot Leads (> 70)", hot_count)
-col4.metric("Datenquelle", source_label)
 
 st.divider()
 
