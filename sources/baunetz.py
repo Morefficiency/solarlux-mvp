@@ -23,8 +23,19 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
 
-LISTING_URL = "https://www.baunetz.de/projekte/index.html"
-CACHE_DIR = Path(".cache/baunetz")
+# Multiple listing pages to rotate across — gives variety each run
+LISTING_URLS = [
+    "https://www.baunetz.de/projekte/index.html",
+    "https://www.baunetz.de/projekte/wohnungsbau/index.html",
+    "https://www.baunetz.de/projekte/buerogebaeude/index.html",
+    "https://www.baunetz.de/projekte/hotel/index.html",
+    "https://www.baunetz.de/projekte/kultur/index.html",
+    "https://www.baunetz.de/projekte/bildung/index.html",
+    "https://www.baunetz.de/projekte/mixed-use/index.html",
+]
+
+CACHE_DIR    = Path(".cache/baunetz")
+CACHE_TTL_H  = 24        # hours before a cached page is considered stale
 REQUEST_DELAY = 1.5
 
 
@@ -33,10 +44,18 @@ def _cache_path(url: str) -> Path:
     return CACHE_DIR / f"{key}.html"
 
 
-def _fetch(url: str, use_cache: bool = True) -> str:
+def _is_stale(path: Path) -> bool:
+    """Return True if file doesn't exist or is older than CACHE_TTL_H hours."""
+    if not path.exists():
+        return True
+    age_h = (time.time() - path.stat().st_mtime) / 3600
+    return age_h >= CACHE_TTL_H
+
+
+def _fetch(url: str) -> str:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     path = _cache_path(url)
-    if use_cache and path.exists():
+    if not _is_stale(path):
         return path.read_text(encoding="utf-8")
     time.sleep(REQUEST_DELAY)
     resp = requests.get(url, headers=HEADERS, timeout=20)
@@ -57,21 +76,40 @@ def _parse_initial_state(html: str) -> dict:
         return {}
 
 
-class BauNetzSource(Source):
-    name = "BauNetz.de"
-
-    def get_project_urls(self, limit: int) -> list[str]:
-        html = _fetch(LISTING_URL)
+def _teasers_from_url(listing_url: str) -> list[str]:
+    """Fetch one listing page and return all project URLs found in it."""
+    try:
+        html  = _fetch(listing_url)
         state = _parse_initial_state(html)
         teasers = (
             state.get("nonPersistentStore", {})
                  .get("projekteIndex", {})
                  .get("teasers", [])
         )
-        return [t["url"] for t in teasers if t.get("url")][:limit]
+        return [t["url"] for t in teasers if t.get("url")]
+    except Exception:
+        return []
+
+
+class BauNetzSource(Source):
+    name = "BauNetz.de"
+
+    def get_project_urls(self, limit: int) -> list[str]:
+        seen: set[str] = set()
+        urls: list[str] = []
+
+        for listing_url in LISTING_URLS:
+            for url in _teasers_from_url(listing_url):
+                if url not in seen:
+                    seen.add(url)
+                    urls.append(url)
+            if len(urls) >= limit * 2:   # collect a healthy pool, then stop
+                break
+
+        return urls[:limit]
 
     def get_page_text(self, url: str) -> str:
-        html = _fetch(url)
+        html  = _fetch(url)
         state = _parse_initial_state(html)
         detail = state.get("nonPersistentStore", {}).get("meldungDetail") or {}
 
@@ -87,7 +125,7 @@ class BauNetzSource(Source):
             if names:
                 parts.append(f"Architekturbüro: {', '.join(names)}")
 
-        soup = BeautifulSoup(html, "lxml")
+        soup    = BeautifulSoup(html, "lxml")
         article = soup.select_one("article")
         if article:
             for tag in article.select("button, nav, .share, figcaption, .image-copyright"):
