@@ -22,12 +22,17 @@ EXTRACT_PROMPT = """Extrahiere aus dem folgenden Bauprojekt-Text diese Felder al
 - project_name: Name/Bezeichnung des Projekts (string oder null)
 - city: Stadt des Projekts (string oder null)
 - bundesland: Deutsches Bundesland (string oder null; null wenn nicht in Deutschland)
-- project_type: Projekttyp, z.B. Mehrfamilienhaus, Wohnbau, Mixed-Use, Bürogebäude, Hotel, Schule, Gewerbe, Umbau, etc. (string oder null)
+- project_type: Projekttyp, z.B. Mehrfamilienhaus, Wohnbau, Mixed-Use, Bürogebäude, Hotel, Schule, Gewerbe, Umbau, Architekturbüro, etc. (string oder null)
 - architect_firm: Name des Architekturbüros (string oder null)
 - bauherr: Name des Bauherrn / Investors / Auftraggebers (string oder null)
 - estimated_completion: Geschätztes Fertigstellungsjahr oder Zeitraum (string oder null)
 - scale_units_or_sqm: Anzahl Wohneinheiten ODER Bruttofläche in m² (string oder null)
 - source_url: Die Quell-URL (string oder null)
+- actors: Liste aller identifizierbaren Akteure im Projekt. Jeder Eintrag hat:
+    - name: Vollständiger Name der Person oder Firma (string)
+    - role: Eine von: "Architekt", "Planer", "Generalunternehmer", "Projektentwickler", "Unknown"
+    - firm: Firmenzugehörigkeit falls angegeben (string oder null)
+  Keine Akteure gefunden → leere Liste [].
 
 Antworte ausschließlich mit dem JSON-Objekt.
 
@@ -37,22 +42,21 @@ TEXT:
 REQUIRED_FIELDS = [
     "project_name", "city", "bundesland", "project_type",
     "architect_firm", "bauherr", "estimated_completion",
-    "scale_units_or_sqm", "source_url",
+    "scale_units_or_sqm", "source_url", "actors",
 ]
 
 
 def _call_llm(page_text: str) -> str:
-    """Call Claude Haiku and return the raw text response."""
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY environment variable not set")
 
     client = anthropic.Anthropic(api_key=api_key)
-    prompt = EXTRACT_PROMPT.format(page_text=page_text[:6000])  # cap tokens
+    prompt = EXTRACT_PROMPT.format(page_text=page_text[:6000])
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=512,
+        max_tokens=768,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -60,9 +64,7 @@ def _call_llm(page_text: str) -> str:
 
 
 def _parse_response(raw: str) -> dict:
-    """Parse JSON from LLM response, stripping accidental markdown fences."""
     text = raw.strip()
-    # Strip ```json ... ``` if present
     if text.startswith("```"):
         lines = text.splitlines()
         text = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
@@ -72,56 +74,26 @@ def _parse_response(raw: str) -> dict:
 def extract_lead(page_text: str) -> dict:
     """
     Extract structured lead data from raw project page text.
-    Retries once on JSON parse failure. Returns dict with all REQUIRED_FIELDS
-    (missing values are None).
+    Retries once on JSON parse failure. Returns dict with all REQUIRED_FIELDS.
     """
     for attempt in range(2):
         try:
             raw = _call_llm(page_text)
             data = _parse_response(raw)
-            # Ensure all required fields present (fill missing with None)
             for field in REQUIRED_FIELDS:
                 data.setdefault(field, None)
+            # Ensure actors is always a list
+            if not isinstance(data.get("actors"), list):
+                data["actors"] = []
             return data
         except json.JSONDecodeError as e:
             if attempt == 0:
                 logger.warning("JSON parse failed (attempt 1), retrying: %s", e)
             else:
                 logger.warning("JSON parse failed (attempt 2), skipping. Raw: %s", raw[:200])
-                return {f: None for f in REQUIRED_FIELDS}
+                return {f: ([] if f == "actors" else None) for f in REQUIRED_FIELDS}
         except Exception as e:
             logger.error("LLM extraction error: %s", e)
-            return {f: None for f in REQUIRED_FIELDS}
+            return {f: ([] if f == "actors" else None) for f in REQUIRED_FIELDS}
 
-    return {f: None for f in REQUIRED_FIELDS}
-
-
-# ---------------------------------------------------------------------------
-# CHECKPOINT
-# ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    import sys
-    from scraper import fetch_project_list, fetch_project_page
-
-    logging.basicConfig(level=logging.INFO)
-    print("=== CHECKPOINT: extractor.py ===\n")
-
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("ERROR: Set ANTHROPIC_API_KEY environment variable first.")
-        sys.exit(1)
-
-    urls = fetch_project_list(limit=15)
-    # Pick a German project for a more interesting result
-    german_urls = [u for u in urls if any(
-        kw in u for kw in ["Berlin", "Muenchen", "Frankfurt", "Hamburg",
-                           "Tirschenreuth", "Deutschland", "Umbau"]
-    )]
-    test_url = german_urls[0] if german_urls else urls[0]
-
-    print(f"Using URL: {test_url}")
-    page_text = fetch_project_page(test_url)
-    print(f"Page text length: {len(page_text)} chars\n")
-
-    lead = extract_lead(page_text)
-    print("Extracted lead:")
-    print(json.dumps(lead, ensure_ascii=False, indent=2))
+    return {f: ([] if f == "actors" else None) for f in REQUIRED_FIELDS}

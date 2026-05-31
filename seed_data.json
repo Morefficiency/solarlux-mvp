@@ -10,8 +10,88 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "14.000 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Umbau_in_Muenchen_von_OSA_Ochs_Schmidhuber_Architekten_nbsp__10321119.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "OSA Ochs Schmidhuber Architekten",
+        "role": "Architekt",
+        "firm": "OSA Ochs Schmidhuber Architekten GmbH"
+      },
+      {
+        "name": "Accumulata",
+        "role": "Projektentwickler",
+        "firm": "Accumulata"
+      },
+      {
+        "name": "Euro Real Estate",
+        "role": "Unknown",
+        "firm": "Euro Real Estate"
+      },
+      {
+        "name": "Wilhelm von Finck Gruppe",
+        "role": "Unknown",
+        "firm": "Wilhelm von Finck Gruppe"
+      },
+      {
+        "name": "Max-Planck-Institut für Innovation und Wettbewerb",
+        "role": "Unknown",
+        "firm": "Max-Planck-Institut für Innovation und Wettbewerb"
+      }
+    ],
     "relevance_score": 80,
-    "scraped_at": "2026-05-31T10:15:46.575419+00:00"
+    "scraped_at": "2026-05-31T11:37:07.760016+00:00"
+  },
+  {
+    "id": 13,
+    "project_name": "Arquipeo",
+    "city": "São Paulo",
+    "bundesland": null,
+    "project_type": "Mixed-Use",
+    "architect_firm": "Estúdio Gustavo Utrabo",
+    "bauherr": "WPP Group and Brookfield",
+    "estimated_completion": "2024",
+    "scale_units_or_sqm": "68.911 m²",
+    "source_url": "https://www.baunetz.de/meldungen/Meldungen-Buero-_und_Veranstaltungsgebaeude_in_Sao_Paulo_von_Estudio_Gustavo_Utrabo_10321074.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Gustavo Utrabo",
+        "role": "Architekt",
+        "firm": "Estúdio Gustavo Utrabo"
+      },
+      {
+        "name": "Fernanda Britto",
+        "role": "Architekt",
+        "firm": "Estúdio Gustavo Utrabo"
+      },
+      {
+        "name": "Bárbara Francelin",
+        "role": "Architekt",
+        "firm": "Estúdio Gustavo Utrabo"
+      },
+      {
+        "name": "Raul Pereira Arquitetos Associados",
+        "role": "Planer",
+        "firm": "Raul Pereira Arquitetos Associados"
+      },
+      {
+        "name": "Pura Arquitetura",
+        "role": "Generalunternehmer",
+        "firm": "Pura Arquitetura"
+      },
+      {
+        "name": "CMA Engenharia",
+        "role": "Planer",
+        "firm": "CMA Engenharia"
+      },
+      {
+        "name": "Consultrix Engenheiros Associados",
+        "role": "Planer",
+        "firm": "Consultrix Engenheiros Associados"
+      }
+    ],
+    "relevance_score": 80,
+    "scraped_at": "2026-05-31T11:37:04.541310+00:00"
   },
   {
     "id": 7,
@@ -24,8 +104,21 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "2.500 m² Bruttogrundfläche",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Hotel_in_Bangkok_von_ASWA_10324189.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "ASWA (Architectural Studio of Work – Aholic)",
+        "role": "Architekt",
+        "firm": "ASWA (Architectural Studio of Work – Aholic)"
+      },
+      {
+        "name": "Vela 360 Hotels",
+        "role": "Projektentwickler",
+        "firm": "Vela 360 Hotels"
+      }
+    ],
     "relevance_score": 80,
-    "scraped_at": "2026-05-31T10:15:20.147224+00:00"
+    "scraped_at": "2026-05-31T11:36:44.124313+00:00"
   },
   {
     "id": 2,
@@ -38,8 +131,46 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "840 m² Bruttogrundfläche",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Umbau_von_Brueckner_-_Brueckner_in_Tirschenreuth_10325990.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Brückner & Brückner Architekten",
+        "role": "Architekt",
+        "firm": "Brückner & Brückner Architekten"
+      },
+      {
+        "name": "gesk.hack Landschaftsarchitekten",
+        "role": "Planer",
+        "firm": "gesk.hack Landschaftsarchitekten"
+      },
+      {
+        "name": "Lehner + Baumgärtner Ingenieurgesellschaft",
+        "role": "Planer",
+        "firm": "Lehner + Baumgärtner Ingenieurgesellschaft"
+      },
+      {
+        "name": "Grünwald & Ach Planungsgesellschaft für Energie- und Gebäudetechnik",
+        "role": "Planer",
+        "firm": "Grünwald & Ach Planungsgesellschaft für Energie- und Gebäudetechnik"
+      },
+      {
+        "name": "Ingenieurbüro für Elektrotechnik Zeitler",
+        "role": "Planer",
+        "firm": "Ingenieurbüro für Elektrotechnik Zeitler"
+      },
+      {
+        "name": "Wolfgang Sorge Ingenieurbüro für Bauphysik",
+        "role": "Planer",
+        "firm": "Wolfgang Sorge Ingenieurbüro für Bauphysik"
+      },
+      {
+        "name": "Deutscher Alpenverein Sektion Karlsbad e.V. Tirschenreuth",
+        "role": "Unknown",
+        "firm": "Deutscher Alpenverein Sektion Karlsbad e.V. Tirschenreuth"
+      }
+    ],
     "relevance_score": 75,
-    "scraped_at": "2026-05-31T10:15:01.590941+00:00"
+    "scraped_at": "2026-05-31T11:36:27.908710+00:00"
   },
   {
     "id": 6,
@@ -52,22 +183,103 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "16.000 m² Bruttogrundfläche",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Institutsbau_v",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Thomas Müller Ivan Reimann Architekten",
+        "role": "Architekt",
+        "firm": "Thomas Müller Ivan Reimann Architekten"
+      },
+      {
+        "name": "Alexander Buchhofer",
+        "role": "Unknown",
+        "firm": null
+      },
+      {
+        "name": "Weidinger Landschaftsarchitekten",
+        "role": "Planer",
+        "firm": "Weidinger Landschaftsarchitekten"
+      },
+      {
+        "name": "GSE Ingenieur-Gesellschaft",
+        "role": "Planer",
+        "firm": "GSE Ingenieur-Gesellschaft"
+      },
+      {
+        "name": "W2 ProjektManagement",
+        "role": "Unknown",
+        "firm": "W2 ProjektManagement"
+      },
+      {
+        "name": "ZWP Ingenieur-AG",
+        "role": "Planer",
+        "firm": "ZWP Ingenieur-AG"
+      },
+      {
+        "name": "Friederike Tebbe Studio Farbarchiv",
+        "role": "Planer",
+        "firm": "Friederike Tebbe Studio Farbarchiv"
+      },
+      {
+        "name": "Hans Gerber",
+        "role": "Unknown",
+        "firm": "Berliner Hochschule für Technik"
+      }
+    ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T10:15:16.702351+00:00"
+    "scraped_at": "2026-05-31T11:36:41.277390+00:00"
   },
   {
     "id": 5,
-    "project_name": "Loftwohnen mit Raumboxen / The Brick 80",
+    "project_name": "The Brick 80 / Loftwohnen mit Raumboxen",
     "city": "Zürich",
     "bundesland": null,
-    "project_type": "Umbau / Umnutzung / Mixed-Use",
+    "project_type": "Umbau, Mixed-Use, Umnutzung",
     "architect_firm": "Züst Gübeli Gambetti Architektur und Städtebau",
     "bauherr": null,
     "estimated_completion": "2024",
-    "scale_units_or_sqm": "14.638 m² Geschossfläche oberirdisch",
+    "scale_units_or_sqm": "14.638 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Umnutzung_eines_Buerobaus_in_Zuerich_von_Zuest_Guebeli_Gambetti_10325088.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Züst Gübeli Gambetti Architektur und Städtebau",
+        "role": "Architekt",
+        "firm": "Züst Gübeli Gambetti Architektur und Städtebau"
+      },
+      {
+        "name": "befair partners",
+        "role": "Unknown",
+        "firm": "befair partners"
+      },
+      {
+        "name": "ORT AG",
+        "role": "Planer",
+        "firm": "ORT AG"
+      },
+      {
+        "name": "K2S Bauingenieure AG",
+        "role": "Planer",
+        "firm": "K2S Bauingenieure AG"
+      },
+      {
+        "name": "Michael Wichser + Partner AG",
+        "role": "Planer",
+        "firm": "Michael Wichser + Partner AG"
+      },
+      {
+        "name": "Wincasa AG",
+        "role": "Projektentwickler",
+        "firm": "Wincasa AG"
+      },
+      {
+        "name": "Baumschlager Eberle Architekten",
+        "role": "Architekt",
+        "firm": "Baumschlager Eberle Architekten"
+      }
+    ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T10:15:13.184547+00:00"
+    "scraped_at": "2026-05-31T11:36:37.044809+00:00"
   },
   {
     "id": 3,
@@ -80,8 +292,16 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "370 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Wohn-_und_Geschaeftshaus_in_Toulouse_von_BAST_10325349.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "BAST Bureau d'Architectures Sans Titre",
+        "role": "Architekt",
+        "firm": "BAST Bureau d'Architectures Sans Titre"
+      }
+    ],
     "relevance_score": 70,
-    "scraped_at": "2026-05-31T10:15:05.220225+00:00"
+    "scraped_at": "2026-05-31T11:36:30.100945+00:00"
   },
   {
     "id": 9,
@@ -94,8 +314,31 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "7.430 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Highschool_in_Malibu_von_Koning_Eizenberg_und_NAC_10323012.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Koning Eizenberg Architecture",
+        "role": "Architekt",
+        "firm": "Koning Eizenberg Architecture"
+      },
+      {
+        "name": "NAC Architecture",
+        "role": "Architekt",
+        "firm": "NAC Architecture"
+      },
+      {
+        "name": "Spurlock Landscape Architects",
+        "role": "Planer",
+        "firm": "Spurlock Landscape Architects"
+      },
+      {
+        "name": "Santa Monica-Malibu Unified School District",
+        "role": "Projektentwickler",
+        "firm": null
+      }
+    ],
     "relevance_score": 60,
-    "scraped_at": "2026-05-31T10:15:27.695259+00:00"
+    "scraped_at": "2026-05-31T11:36:50.515714+00:00"
   },
   {
     "id": 4,
@@ -108,12 +351,299 @@
     "estimated_completion": "2024",
     "scale_units_or_sqm": "18.300 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-White_Arkitekter_in_Enkoeping_10325115.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "White Arkitekter",
+        "role": "Architekt",
+        "firm": "White Arkitekter"
+      },
+      {
+        "name": "Kinnarps",
+        "role": "Unknown",
+        "firm": "Kinnarps"
+      },
+      {
+        "name": "Anders Bobert",
+        "role": "Unknown",
+        "firm": null
+      },
+      {
+        "name": "Henrik Mill",
+        "role": "Unknown",
+        "firm": null
+      }
+    ],
     "relevance_score": 60,
-    "scraped_at": "2026-05-31T10:15:09.187135+00:00"
+    "scraped_at": "2026-05-31T11:36:32.812660+00:00"
+  },
+  {
+    "id": 42,
+    "project_name": "Ackermann + Renner – Büroprofil",
+    "city": "Berlin",
+    "bundesland": "Berlin",
+    "project_type": "Architekturbüro",
+    "architect_firm": "Ackermann + Renner",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/ackermann-renner/2991977",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "Ackermann + Renner",
+        "role": "Architekt",
+        "firm": "Ackermann + Renner"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:38:07.698788+00:00"
+  },
+  {
+    "id": 41,
+    "project_name": "ABMP – Büroprofil",
+    "city": "Freiburg",
+    "bundesland": "Baden-Württemberg",
+    "project_type": "Architekturbüro",
+    "architect_firm": "ABMP",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/abmp/4786462",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "ABMP",
+        "role": "Architekt",
+        "firm": "ABMP"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:38:06.216173+00:00"
+  },
+  {
+    "id": 40,
+    "project_name": "Abelmann Vielain Pock Architekten – Büroprofil",
+    "city": "Berlin",
+    "bundesland": "Berlin",
+    "project_type": "Architekturbüro",
+    "architect_firm": "Abelmann Vielain Pock Architekten",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/abelmann-vielain-pock/31377",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "Abelmann Vielain Pock Architekten",
+        "role": "Architekt",
+        "firm": "Abelmann Vielain Pock Architekten"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:38:02.268741+00:00"
+  },
+  {
+    "id": 39,
+    "project_name": "AAg LoebnerSchäferWeber – Büroprofil",
+    "city": "Heidelberg",
+    "bundesland": "Baden-Württemberg",
+    "project_type": "Architekturbüro",
+    "architect_firm": "AAg LoebnerSchäferWeber",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/aag-loebnerschaeferweber/4774851",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "AAg LoebnerSchäferWeber",
+        "role": "Architekt",
+        "firm": "AAg LoebnerSchäferWeber"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:38:00.605253+00:00"
+  },
+  {
+    "id": 38,
+    "project_name": "A24 LANDSCHAFT Landschaftsarchitektur – Büroprofil",
+    "city": "Berlin",
+    "bundesland": "Berlin",
+    "project_type": "Architekturbüro",
+    "architect_firm": "A24 LANDSCHAFT Landschaftsarchitektur",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/a24/6496446",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "A24 LANDSCHAFT Landschaftsarchitektur",
+        "role": "Architekt",
+        "firm": "A24 LANDSCHAFT Landschaftsarchitektur"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:59.100428+00:00"
+  },
+  {
+    "id": 37,
+    "project_name": "3pass – Büroprofil",
+    "city": "Köln",
+    "bundesland": "Nordrhein-Westfalen",
+    "project_type": "Architekturbüro",
+    "architect_firm": "3pass",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/3pass/31317",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "3pass",
+        "role": "Architekt",
+        "firm": "3pass"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:54.434544+00:00"
+  },
+  {
+    "id": 36,
+    "project_name": "3G1 Architektur – Büroprofil",
+    "city": "München",
+    "bundesland": "Bayern",
+    "project_type": "Architekturbüro",
+    "architect_firm": "3G1 Architektur",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/3g1-architektur/4992801",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "3G1 Architektur",
+        "role": "Architekt",
+        "firm": "3G1 Architektur"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:53.038434+00:00"
+  },
+  {
+    "id": 35,
+    "project_name": "3deluxe – Büroprofil",
+    "city": "Wiesbaden",
+    "bundesland": "Hessen",
+    "project_type": "Architekturbüro",
+    "architect_firm": "3deluxe",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/3deluxe/31089",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "3deluxe",
+        "role": "Architekt",
+        "firm": "3deluxe"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:51.612251+00:00"
+  },
+  {
+    "id": 34,
+    "project_name": "360grad+ architekten – Büroprofil",
+    "city": "Hamburg",
+    "bundesland": "Hamburg",
+    "project_type": "Architekturbüro",
+    "architect_firm": "360grad+ architekten",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/360grad-architekten/3400467",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "360grad+ architekten",
+        "role": "Architekt",
+        "firm": "360grad+ architekten"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:50.213320+00:00"
+  },
+  {
+    "id": 33,
+    "project_name": "2-box architekten – Büroprofil",
+    "city": "Stuttgart",
+    "bundesland": "Baden-Württemberg",
+    "project_type": "Architekturbüro",
+    "architect_firm": "2-box architekten",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/2-box-architekten/4300559",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "2-box architekten",
+        "role": "Architekt",
+        "firm": "2-box architekten"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:48.691702+00:00"
+  },
+  {
+    "id": 32,
+    "project_name": "17A ARCHITEKTUR – Büroprofil",
+    "city": "Königsbrunn",
+    "bundesland": "Bayern",
+    "project_type": "Architekturbüro",
+    "architect_firm": "17A ARCHITEKTUR",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/17a-architektur/7274972",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "17A ARCHITEKTUR",
+        "role": "Architekt",
+        "firm": "17A ARCHITEKTUR"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:47.270642+00:00"
+  },
+  {
+    "id": 31,
+    "project_name": "1100 Architekten Riehm+Piscuskas – Büroprofil",
+    "city": "Frankfurt am Main",
+    "bundesland": "Hessen",
+    "project_type": "Architekturbüro",
+    "architect_firm": "1100 Architekten Riehm+Piscuskas",
+    "bauherr": null,
+    "estimated_completion": null,
+    "scale_units_or_sqm": null,
+    "source_url": "https://www.architektensuche.de/1100-architekten/968645",
+    "source": "architektensuche.de",
+    "actors": [
+      {
+        "name": "1100 Architekten Riehm+Piscuskas",
+        "role": "Architekt",
+        "firm": "1100 Architekten Riehm+Piscuskas"
+      }
+    ],
+    "relevance_score": 50,
+    "scraped_at": "2026-05-31T11:37:45.864619+00:00"
   },
   {
     "id": 15,
-    "project_name": "New Wave London Firmensitz - Aufstockung Humber Road",
+    "project_name": "New Wave London - Aufstockung Humber Road",
     "city": "London",
     "bundesland": null,
     "project_type": "Aufstockung",
@@ -122,22 +652,41 @@
     "estimated_completion": "2023",
     "scale_units_or_sqm": "495 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Aufstockung_in_London_von_Thomas-McBrien_10321259.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Thomas-McBrien Architects",
+        "role": "Architekt",
+        "firm": null
+      },
+      {
+        "name": "Barry McBrien",
+        "role": "Planer",
+        "firm": "Thomas-McBrien Architects"
+      },
+      {
+        "name": "New Wave London",
+        "role": "Projektentwickler",
+        "firm": null
+      },
+      {
+        "name": "LIM Engineering",
+        "role": "Planer",
+        "firm": null
+      },
+      {
+        "name": "The PES",
+        "role": "Planer",
+        "firm": null
+      },
+      {
+        "name": "Assent",
+        "role": "Planer",
+        "firm": null
+      }
+    ],
     "relevance_score": 50,
-    "scraped_at": "2026-05-31T10:15:50.020627+00:00"
-  },
-  {
-    "id": 13,
-    "project_name": "Arquipeo",
-    "city": "São Paulo",
-    "bundesland": null,
-    "project_type": "Büro- und Veranstaltungsgebäude",
-    "architect_firm": "Estúdio Gustavo Utrabo",
-    "bauherr": "WPP Group and Brookfield",
-    "estimated_completion": "2024",
-    "scale_units_or_sqm": "68.911 m²",
-    "source_url": "https://www.baunetz.de/meldungen/Meldungen-Buero-_und_Veranstaltungsgebaeude_in_Sao_Paulo_von_Estudio_Gustavo_Utrabo_10321074.html",
-    "relevance_score": 50,
-    "scraped_at": "2026-05-31T10:15:43.009658+00:00"
+    "scraped_at": "2026-05-31T11:37:10.508745+00:00"
   },
   {
     "id": 1,
@@ -150,8 +699,26 @@
     "estimated_completion": "2024",
     "scale_units_or_sqm": "1.874 m² Nutzfläche, 1,7 Hektar mit Außenbereichen",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Mehrzweckhalle_und_Klubhaus_in_Sesto_Calende_von_Giulia_de_Appolonia_10326216.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Giulia de Appolonia",
+        "role": "Architekt",
+        "firm": "Giulia de Appolonia GDA"
+      },
+      {
+        "name": "F&M Ingegneria",
+        "role": "Planer",
+        "firm": "F&M Ingegneria"
+      },
+      {
+        "name": "Filippo Poli",
+        "role": "Unknown",
+        "firm": null
+      }
+    ],
     "relevance_score": 45,
-    "scraped_at": "2026-05-31T10:14:59.633284+00:00"
+    "scraped_at": "2026-05-31T11:36:23.734688+00:00"
   },
   {
     "id": 10,
@@ -162,10 +729,58 @@
     "architect_firm": "Flaim Prünster Architekten",
     "bauherr": null,
     "estimated_completion": "2024",
-    "scale_units_or_sqm": "11 Wohneinheiten, 450 m² Geschossfläche",
+    "scale_units_or_sqm": "450 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Unterkuenfte_fuer_Mitarbeitende_von_Flaim_Pruenster_Architekten_10323111.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Flaim Prünster Architekten",
+        "role": "Architekt",
+        "firm": "Flaim Prünster Architekten"
+      },
+      {
+        "name": "Loris Clara",
+        "role": "Architekt",
+        "firm": "Flaim Prünster Architekten"
+      },
+      {
+        "name": "Roberto Zanini",
+        "role": "Architekt",
+        "firm": "Flaim Prünster Architekten"
+      },
+      {
+        "name": "Martino Stelzer",
+        "role": "Architekt",
+        "firm": "Flaim Prünster Architekten"
+      },
+      {
+        "name": "Walter Angonese",
+        "role": "Architekt",
+        "firm": null
+      },
+      {
+        "name": "Holzner & Bertagnolli",
+        "role": "Planer",
+        "firm": "Holzner & Bertagnolli"
+      },
+      {
+        "name": "Ing. Carlini",
+        "role": "Planer",
+        "firm": null
+      },
+      {
+        "name": "Othmar Barth",
+        "role": "Architekt",
+        "firm": null
+      },
+      {
+        "name": "Michael Obrist",
+        "role": "Architekt",
+        "firm": null
+      }
+    ],
     "relevance_score": 40,
-    "scraped_at": "2026-05-31T10:15:31.574198+00:00"
+    "scraped_at": "2026-05-31T11:36:54.782999+00:00"
   },
   {
     "id": 12,
@@ -178,8 +793,31 @@
     "estimated_completion": "2025",
     "scale_units_or_sqm": "122 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Stallgebaeude_von_Hohengasser_Wirnsberger_Architekten_10320138.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Hohengasser Wirnsberger Architekten",
+        "role": "Architekt",
+        "firm": "Hohengasser Wirnsberger Architekten"
+      },
+      {
+        "name": "Thomas Winkler",
+        "role": "Unknown",
+        "firm": null
+      },
+      {
+        "name": "Markus Lackner",
+        "role": "Planer",
+        "firm": "BAUINGENIEURE | LACKNER | EGGER | ZT GMBH"
+      },
+      {
+        "name": "K&B Holzbau",
+        "role": "Generalunternehmer",
+        "firm": "K&B Holzbau"
+      }
+    ],
     "relevance_score": 30,
-    "scraped_at": "2026-05-31T10:15:39.298639+00:00"
+    "scraped_at": "2026-05-31T11:37:01.052531+00:00"
   },
   {
     "id": 11,
@@ -192,21 +830,82 @@
     "estimated_completion": "2026",
     "scale_units_or_sqm": "230 m² Geschossfläche",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Einfamilienhaus_in_Riehen_von_Stern_Zuern_Architekten_10322978.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "Stern Zürn Architekten",
+        "role": "Architekt",
+        "firm": "Stern Zürn Architekten"
+      },
+      {
+        "name": "Ingénieur wh-p Ingenieure",
+        "role": "Planer",
+        "firm": "Ingénieur wh-p Ingenieure"
+      },
+      {
+        "name": "Studio Emma Thomas",
+        "role": "Planer",
+        "firm": "Studio Emma Thomas"
+      },
+      {
+        "name": "Georg Paul",
+        "role": "Unknown",
+        "firm": null
+      },
+      {
+        "name": "Lehmag AG",
+        "role": "Unknown",
+        "firm": "Lehmag AG"
+      },
+      {
+        "name": "Markus Stern",
+        "role": "Unknown",
+        "firm": null
+      }
+    ],
     "relevance_score": 30,
-    "scraped_at": "2026-05-31T10:15:35.432343+00:00"
+    "scraped_at": "2026-05-31T11:36:58.055337+00:00"
   },
   {
     "id": 8,
-    "project_name": "Kabinentrakt Ripoll",
+    "project_name": "Kabinentrakt in Ripoll",
     "city": "Ripoll",
     "bundesland": null,
-    "project_type": "Sportanlage, Kabinentrakt",
+    "project_type": "Sportanlage",
     "architect_firm": "MH.AP Studio und Sergi Serrat",
     "bauherr": null,
     "estimated_completion": "2023",
     "scale_units_or_sqm": "492 m²",
     "source_url": "https://www.baunetz.de/meldungen/Meldungen-Kabinentrakt_in_Katalonien_von_MH.AP_und_Sergi_Serrat_10323837.html",
+    "source": "BauNetz.de",
+    "actors": [
+      {
+        "name": "MH.AP Studio",
+        "role": "Architekt",
+        "firm": "MH.AP Studio"
+      },
+      {
+        "name": "Sergi Serrat",
+        "role": "Architekt",
+        "firm": null
+      },
+      {
+        "name": "Marina Huguet",
+        "role": "Architekt",
+        "firm": "MH.AP Studio"
+      },
+      {
+        "name": "Andrés Penuela",
+        "role": "Architekt",
+        "firm": "MH.AP Studio"
+      },
+      {
+        "name": "Pol Masip",
+        "role": "Unknown",
+        "firm": null
+      }
+    ],
     "relevance_score": 20,
-    "scraped_at": "2026-05-31T10:15:23.743310+00:00"
+    "scraped_at": "2026-05-31T11:36:47.888529+00:00"
   }
 ]
