@@ -9,11 +9,15 @@ import os
 import time
 from pathlib import Path
 
+from PIL import Image
 import streamlit as st
+
+_ICON_PATH = Path(__file__).parent / "assets" / "solarlux_icon.png"
+_favicon = Image.open(_ICON_PATH) if _ICON_PATH.exists() else "🏗️"
 
 st.set_page_config(
     page_title="Solarlux Lead-Generierung",
-    page_icon="🏗️",
+    page_icon=_favicon,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -217,19 +221,19 @@ st.markdown("""
 # Helpers
 # ---------------------------------------------------------------------------
 SEED_PATH = Path(__file__).parent / "seed_data.json"
-ICON_PATH = Path(__file__).parent / "assets" / "icon.svg"
+ICON_PATH = Path(__file__).parent / "assets" / "solarlux_icon.png"
 
 
 def _icon_img_tag(height: int = 38) -> str:
-    """Return an <img> tag with the SVG icon embedded as a base64 data URL."""
+    """Return an <img> tag with the PNG icon embedded as a base64 data URL."""
     try:
         b64 = base64.b64encode(ICON_PATH.read_bytes()).decode()
         return (
-            f'<img src="data:image/svg+xml;base64,{b64}" '
+            f'<img src="data:image/png;base64,{b64}" '
             f'height="{height}" style="flex-shrink:0;margin-top:2px"/>'
         )
     except Exception:
-        return ""  # silently skip if file missing
+        return ""
 
 
 def get_api_key() -> str | None:
