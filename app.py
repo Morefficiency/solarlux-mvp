@@ -12,7 +12,7 @@ from pathlib import Path
 from PIL import Image
 import streamlit as st
 
-_ICON_PATH = Path(__file__).parent / "assets" / "solarlux_icon.png"
+_ICON_PATH = Path(__file__).parent / "assets" / "solarlux_icon_red.png"
 _favicon = Image.open(_ICON_PATH) if _ICON_PATH.exists() else "🏗️"
 
 st.set_page_config(
