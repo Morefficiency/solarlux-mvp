@@ -1,0 +1,8 @@
+<svg width="160" height="140" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- left panel: leans outward left -->
+  <polygon points="4,18 52,6 52,128 4,116" fill="#b0b0b0"/>
+  <!-- middle panel: straight -->
+  <polygon points="60,6 100,6 100,128 60,128" fill="#b8b8b8"/>
+  <!-- right panel: leans outward right -->
+  <polygon points="108,6 156,18 156,116 108,128" fill="#b0b0b0"/>
+</svg>

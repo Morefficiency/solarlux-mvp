@@ -2,6 +2,7 @@
 Solarlux Lead Intelligence Dashboard
 Internal sales tool — multi-source construction project leads.
 """
+import base64
 import json
 import logging
 import os
@@ -216,6 +217,19 @@ st.markdown("""
 # Helpers
 # ---------------------------------------------------------------------------
 SEED_PATH = Path(__file__).parent / "seed_data.json"
+ICON_PATH = Path(__file__).parent / "assets" / "icon.svg"
+
+
+def _icon_img_tag(height: int = 38) -> str:
+    """Return an <img> tag with the SVG icon embedded as a base64 data URL."""
+    try:
+        b64 = base64.b64encode(ICON_PATH.read_bytes()).decode()
+        return (
+            f'<img src="data:image/svg+xml;base64,{b64}" '
+            f'height="{height}" style="flex-shrink:0;margin-top:2px"/>'
+        )
+    except Exception:
+        return ""  # silently skip if file missing
 
 
 def get_api_key() -> str | None:
@@ -281,10 +295,13 @@ def score_color(score: int) -> str:
 # Sidebar
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    st.markdown("""
-    <div style="padding:16px 0 4px 0">
-      <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
-      <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead-Generierung</div>
+    st.markdown(f"""
+    <div style="padding:16px 0 4px 0;display:flex;align-items:center;gap:10px">
+      {_icon_img_tag(height=30)}
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
+        <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead-Generierung</div>
+      </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -376,13 +393,9 @@ elif sort_by == "Erstmals gesehen ↓":
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
-st.markdown("""
+st.markdown(f"""
 <div class="sl-header">
-  <svg width="48" height="34" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="0,5 14,2 14,34 0,31" fill="#8c8c8c"/>
-    <polygon points="17,2 29,2 29,34 17,34" fill="#8c8c8c"/>
-    <polygon points="32,2 52,5 52,31 32,34" fill="#8c8c8c"/>
-  </svg>
+  {_icon_img_tag(height=42)}
   <div class="sl-brand">
     <div class="sl-logo">SOLARLUX</div>
     <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
