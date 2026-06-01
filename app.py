@@ -251,7 +251,20 @@ st.markdown("""
   section[data-testid="stSidebar"] div {
     color: #cbd5e1 !important;
   }
-  /* Sidebar buttons */
+  /* Sidebar — primary button (Live-Suche starten) */
+  section[data-testid="stSidebar"] .stButton:first-of-type > button {
+    background: #E30613 !important;
+    border: none !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(227,6,19,0.35) !important;
+  }
+  section[data-testid="stSidebar"] .stButton:first-of-type > button:hover {
+    background: #c0000f !important;
+    box-shadow: 0 4px 14px rgba(227,6,19,0.45) !important;
+  }
+  /* Sidebar — secondary buttons (Cache leeren etc.) */
   section[data-testid="stSidebar"] .stButton > button {
     background: #1e293b !important;
     border: 1px solid #334155 !important;
@@ -261,6 +274,23 @@ st.markdown("""
   section[data-testid="stSidebar"] .stButton > button:hover {
     background: #334155 !important;
     border-color: #475569 !important;
+  }
+  /* Sidebar — selectbox */
+  section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    border-radius: 8px !important;
+  }
+  section[data-testid="stSidebar"] [data-baseweb="select"] > div:hover {
+    border-color: #475569 !important;
+  }
+  section[data-testid="stSidebar"] [data-baseweb="select"] span,
+  section[data-testid="stSidebar"] [data-baseweb="select"] div {
+    color: #e2e8f0 !important;
+    background: transparent !important;
+  }
+  section[data-testid="stSidebar"] [data-baseweb="select"] svg {
+    fill: #94a3b8 !important;
   }
   /* Sidebar inputs / sliders */
   section[data-testid="stSidebar"] .stSlider > div > div { background: #1e293b !important; }
