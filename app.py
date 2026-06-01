@@ -35,36 +35,39 @@ st.markdown("""
     --red:    #E30613;
     --green:  #16a34a;
     --amber:  #d97706;
+    --indigo: #6366f1;
     --grey:   #6b7280;
     --bg:     #f9fafb;
     --card:   #ffffff;
     --border: #e5e7eb;
     --text:   #111827;
     --muted:  #6b7280;
+    --dark:   #0f172a;
   }
 
   footer { visibility: hidden; }
   #MainMenu { visibility: hidden; }
 
-  /* ── Header ── */
-  .sl-header {
-    display: flex; align-items: center; gap: 12px;
-    padding: 8px 0 20px 0;
+  /* ── Hero header ── */
+  .sl-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1a1f2e 100%);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   }
-  .sl-brand {
-    display: flex; flex-direction: column; gap: 2px;
-  }
+  .sl-brand { display: flex; flex-direction: column; gap: 4px; }
   .sl-logo {
-    font-size: 22px; font-weight: 800; color: var(--red);
+    font-size: 26px; font-weight: 800; color: #ffffff;
     letter-spacing: -0.5px; line-height: 1;
   }
+  .sl-logo span { color: var(--red); }
   .sl-tagline {
-    font-size: 11px; color: var(--muted); font-weight: 400;
-    letter-spacing: 0.01em;
-  }
-  .sl-divider {
-    height: 2px; background: var(--red);
-    border-radius: 1px; margin-bottom: 24px;
+    font-size: 12px; color: #94a3b8; font-weight: 400;
+    letter-spacing: 0.02em;
   }
 
   /* ── Stat cards ── */
@@ -76,6 +79,7 @@ st.markdown("""
     background: var(--card); border: 1px solid var(--border);
     border-radius: 12px; padding: 18px 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-top-width: 3px; border-top-style: solid;
   }
   .stat-label {
     font-size: 11px; font-weight: 600; color: var(--muted);
@@ -123,6 +127,40 @@ st.markdown("""
     padding: 0 18px 18px 18px !important;
     border-top: 1px solid var(--border);
   }
+
+  /* ── Pill tabs ── */
+  div[data-testid="stTabs"] > div:first-child {
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 4px;
+    gap: 2px;
+    border-bottom: none !important;
+  }
+  div[data-testid="stTabs"] button[role="tab"] {
+    border-radius: 8px !important;
+    border: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    background: transparent !important;
+    padding: 7px 18px !important;
+    transition: all 0.15s ease;
+  }
+  div[data-testid="stTabs"] button[role="tab"]:hover {
+    color: var(--text) !important;
+    background: rgba(255,255,255,0.7) !important;
+  }
+  div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+    background: var(--red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(227,6,19,0.3) !important;
+  }
+  div[data-testid="stTabs"] button[role="tab"][aria-selected="true"]:hover {
+    background: var(--red) !important;
+    color: #ffffff !important;
+  }
+  /* Hide the tab underline indicator */
+  div[data-testid="stTabs"] button[role="tab"] div[data-testid="stMarkdownContainer"] { display: none; }
 
   /* ── Score dot ── */
   .dot {
@@ -201,19 +239,57 @@ st.markdown("""
     border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;
   }
 
-  /* ── Sidebar ── */
+  /* ── Dark sidebar ── */
   section[data-testid="stSidebar"] {
-    background: var(--card) !important;
-    border-right: 1px solid var(--border) !important;
+    background: #0f172a !important;
+    border-right: none !important;
   }
+  /* Sidebar text */
+  section[data-testid="stSidebar"] label,
+  section[data-testid="stSidebar"] p,
+  section[data-testid="stSidebar"] span,
+  section[data-testid="stSidebar"] div {
+    color: #cbd5e1 !important;
+  }
+  /* Sidebar buttons */
+  section[data-testid="stSidebar"] .stButton > button {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #e2e8f0 !important;
+    border-radius: 8px !important;
+  }
+  section[data-testid="stSidebar"] .stButton > button:hover {
+    background: #334155 !important;
+    border-color: #475569 !important;
+  }
+  /* Sidebar inputs / sliders */
+  section[data-testid="stSidebar"] .stSlider > div > div { background: #1e293b !important; }
+  section[data-testid="stSidebar"] input,
+  section[data-testid="stSidebar"] select {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+  }
+  /* Sidebar divider */
+  section[data-testid="stSidebar"] hr { border-color: #1e293b !important; }
+  /* Sidebar expander */
+  section[data-testid="stSidebar"] div[data-testid="stExpander"] {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+  }
+  section[data-testid="stSidebar"] div[data-testid="stExpander"] summary {
+    color: #cbd5e1 !important;
+  }
+
   .sb-label {
-    font-size: 10px; font-weight: 700; color: var(--muted);
+    font-size: 10px; font-weight: 700; color: #475569;
     text-transform: uppercase; letter-spacing: 0.1em;
     margin: 20px 0 8px 0;
   }
   .sb-stat {
-    font-size: 13px; color: var(--text); line-height: 1.7;
+    font-size: 13px; color: #94a3b8; line-height: 1.7;
   }
+  .sb-stat b { color: #e2e8f0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -300,11 +376,11 @@ def score_color(score: int) -> str:
 # ---------------------------------------------------------------------------
 with st.sidebar:
     st.markdown(f"""
-    <div style="padding:16px 0 4px 0;display:flex;align-items:center;gap:10px">
+    <div style="padding:16px 0 8px 0;display:flex;align-items:center;gap:10px">
       {_icon_img_tag(height=30)}
       <div>
-        <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
-        <div style="font-size:11px;color:#9ca3af;margin-top:2px">Lead-Generierung</div>
+        <div style="font-size:17px;font-weight:800;color:#ffffff;letter-spacing:-0.5px">SOLAR<span style="color:#E30613">LUX</span></div>
+        <div style="font-size:11px;color:#64748b;margin-top:2px">Lead-Generierung</div>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -400,14 +476,13 @@ elif sort_by == "Erstmals gesehen ↓":
 # Header
 # ---------------------------------------------------------------------------
 st.markdown(f"""
-<div class="sl-header">
-  {_icon_img_tag(height=42)}
+<div class="sl-hero">
+  {_icon_img_tag(height=52)}
   <div class="sl-brand">
-    <div class="sl-logo">SOLARLUX</div>
+    <div class="sl-logo">SOLAR<span>LUX</span></div>
     <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
   </div>
 </div>
-<div class="sl-divider"></div>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
@@ -422,22 +497,22 @@ src_cls   = "stat-live" if not using_seed else "stat-demo"
 
 st.markdown(f"""
 <div class="stat-row">
-  <div class="stat-card">
+  <div class="stat-card" style="border-top-color:#E30613">
     <div class="stat-label">Leads gesamt</div>
     <div class="stat-value">{total}</div>
     <div class="stat-sub">aus allen Quellen</div>
   </div>
-  <div class="stat-card">
+  <div class="stat-card" style="border-top-color:#6366f1">
     <div class="stat-label">Ø Relevanz</div>
     <div class="stat-value">{avg_score}</div>
     <div class="stat-sub">von 100 Punkten</div>
   </div>
-  <div class="stat-card">
+  <div class="stat-card" style="border-top-color:#16a34a">
     <div class="stat-label">Top-Leads</div>
     <div class="stat-value">{hot}</div>
     <div class="stat-sub">Score ≥ 70</div>
   </div>
-  <div class="stat-card">
+  <div class="stat-card" style="border-top-color:{'#16a34a' if not using_seed else '#d97706'}">
     <div class="stat-label">Cache</div>
     <div class="stat-value" style="font-size:22px">{src_label}</div>
     <div class="stat-sub {src_cls}">{src_sub}</div>
