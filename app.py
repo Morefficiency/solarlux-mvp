@@ -504,20 +504,7 @@ elif sort_by == "Erstmals gesehen ↓":
     leads.sort(key=lambda l: l.get("first_seen") or "", reverse=True)
 
 # ---------------------------------------------------------------------------
-# Header
-# ---------------------------------------------------------------------------
-st.markdown(f"""
-<div class="sl-hero">
-  {_icon_img_tag(height=52)}
-  <div class="sl-brand">
-    <div class="sl-logo">SOLAR<span>LUX</span></div>
-    <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
-  </div>
-</div>
-""", unsafe_allow_html=True)
-
-# ---------------------------------------------------------------------------
-# Stat cards
+# Sticky header + stat cards
 # ---------------------------------------------------------------------------
 total     = len(all_leads)
 avg_score = round(sum(l.get("relevance_score", 0) for l in all_leads) / total, 1) if total else 0
@@ -527,26 +514,35 @@ src_sub   = "Live-Daten" if not using_seed else "Demo-Daten"
 src_cls   = "stat-live" if not using_seed else "stat-demo"
 
 st.markdown(f"""
-<div class="stat-row">
-  <div class="stat-card" style="border-top-color:#E30613">
-    <div class="stat-label">Leads gesamt</div>
-    <div class="stat-value">{total}</div>
-    <div class="stat-sub">aus allen Quellen</div>
+<div style="position:sticky;top:0;z-index:999;background:#f9fafb;padding-bottom:16px;margin-bottom:4px;">
+  <div class="sl-hero">
+    {_icon_img_tag(height=52)}
+    <div class="sl-brand">
+      <div class="sl-logo">SOLAR<span>LUX</span></div>
+      <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
+    </div>
   </div>
-  <div class="stat-card" style="border-top-color:#6366f1">
-    <div class="stat-label">Ø Relevanz</div>
-    <div class="stat-value">{avg_score}</div>
-    <div class="stat-sub">von 100 Punkten</div>
-  </div>
-  <div class="stat-card" style="border-top-color:#16a34a">
-    <div class="stat-label">Top-Leads</div>
-    <div class="stat-value">{hot}</div>
-    <div class="stat-sub">Score ≥ 70</div>
-  </div>
-  <div class="stat-card" style="border-top-color:{'#16a34a' if not using_seed else '#d97706'}">
-    <div class="stat-label">Cache</div>
-    <div class="stat-value" style="font-size:22px">{src_label}</div>
-    <div class="stat-sub {src_cls}">{src_sub}</div>
+  <div class="stat-row" style="margin-bottom:0">
+    <div class="stat-card" style="border-top-color:#E30613">
+      <div class="stat-label">Leads gesamt</div>
+      <div class="stat-value">{total}</div>
+      <div class="stat-sub">aus allen Quellen</div>
+    </div>
+    <div class="stat-card" style="border-top-color:#6366f1">
+      <div class="stat-label">Ø Relevanz</div>
+      <div class="stat-value">{avg_score}</div>
+      <div class="stat-sub">von 100 Punkten</div>
+    </div>
+    <div class="stat-card" style="border-top-color:#16a34a">
+      <div class="stat-label">Top-Leads</div>
+      <div class="stat-value">{hot}</div>
+      <div class="stat-sub">Score ≥ 70</div>
+    </div>
+    <div class="stat-card" style="border-top-color:{'#16a34a' if not using_seed else '#d97706'}">
+      <div class="stat-label">Cache</div>
+      <div class="stat-value" style="font-size:22px">{src_label}</div>
+      <div class="stat-sub {src_cls}">{src_sub}</div>
+    </div>
   </div>
 </div>
 """, unsafe_allow_html=True)
