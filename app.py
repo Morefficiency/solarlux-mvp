@@ -275,21 +275,21 @@ st.markdown("""
     background: #334155 !important;
     border-color: #475569 !important;
   }
-  /* Sidebar — selectbox */
-  section[data-testid="stSidebar"] [data-baseweb="select"] > div {
-    background: #1e293b !important;
-    border-color: #334155 !important;
-    border-radius: 8px !important;
-  }
-  section[data-testid="stSidebar"] [data-baseweb="select"] > div:hover {
+  /* Sidebar — selectbox trigger box */
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[role="combobox"],
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[role="combobox"] > div,
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] [data-baseweb="select"] > div:first-child {
+    background-color: #1e293b !important;
     border-color: #475569 !important;
-  }
-  section[data-testid="stSidebar"] [data-baseweb="select"] span,
-  section[data-testid="stSidebar"] [data-baseweb="select"] div {
+    border-radius: 8px !important;
     color: #e2e8f0 !important;
-    background: transparent !important;
   }
-  section[data-testid="stSidebar"] [data-baseweb="select"] svg {
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] div[role="combobox"] *,
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] [data-baseweb="select"] * {
+    color: #e2e8f0 !important;
+    background-color: transparent !important;
+  }
+  section[data-testid="stSidebar"] div[data-testid="stSelectbox"] svg {
     fill: #94a3b8 !important;
   }
   /* Sidebar inputs / sliders */
@@ -420,6 +420,7 @@ with st.sidebar:
     # Daten
     st.markdown('<div class="sb-label">Daten</div>', unsafe_allow_html=True)
     run_scrape = st.button("🔄 Live-Suche starten", use_container_width=True,
+                           type="primary",
                            help="BauNetz.de · competitionline · architektensuche (~60–90 Sek.)")
 
     # Filter
