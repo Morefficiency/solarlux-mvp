@@ -61,10 +61,9 @@ st.markdown("""
   }
   .sl-brand { display: flex; flex-direction: column; gap: 4px; }
   .sl-logo {
-    font-size: 26px; font-weight: 800; color: #ffffff;
+    font-size: 26px; font-weight: 800; color: var(--red);
     letter-spacing: -0.5px; line-height: 1;
   }
-  .sl-logo span { color: var(--red); }
   .sl-tagline {
     font-size: 12px; color: #94a3b8; font-weight: 400;
     letter-spacing: 0.02em;
@@ -409,7 +408,7 @@ with st.sidebar:
     <div style="padding:16px 0 8px 0;display:flex;align-items:center;gap:10px">
       {_icon_img_tag(height=30)}
       <div>
-        <div style="font-size:17px;font-weight:800;color:#ffffff;letter-spacing:-0.5px">SOLAR<span style="color:#E30613">LUX</span></div>
+        <div style="font-size:17px;font-weight:800;color:#E30613;letter-spacing:-0.5px">SOLARLUX</div>
         <div style="font-size:11px;color:#64748b;margin-top:2px">Lead-Generierung</div>
       </div>
     </div>
@@ -518,7 +517,7 @@ st.markdown(f"""
   <div class="sl-hero">
     {_icon_img_tag(height=52)}
     <div class="sl-brand">
-      <div class="sl-logo">SOLAR<span>LUX</span></div>
+      <div class="sl-logo">SOLARLUX</div>
       <div class="sl-tagline">Lead-Generierung &nbsp;·&nbsp; Bauprojekt-Radar für Deutschland &amp; Europa</div>
     </div>
   </div>
